@@ -6,6 +6,10 @@ import { getDictionary } from "../../get-dictionary"
 import { Locale } from '../../i18n-config'
 import Counter from "./components/counter"
 import LocaleSwitcher from './components/locale-switcher'
+import { TestMolecule } from "./components/TestMolecule"
+import { TestHexagon } from "./components/TestHexagon"
+import { TestHexagon2 } from "./components/TestHexagon2"
+import { TestHexagon3 } from "./components/TestHexagon3"
 
 interface Home {
   params: { lang: Locale }
@@ -34,6 +38,14 @@ export default async function Home({ params: { lang } }: Home) {
           return <p key={index}>{message.message}</p>
         })}
       </div>
+
+
+      <TestStyle />
+      <TestMolecule />
+      <TestHexagon />
+
+
+      <TestHexagon3 />
 
       <ContactForm />
     </>

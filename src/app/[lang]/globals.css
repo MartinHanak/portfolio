@@ -3,6 +3,185 @@
 @tailwind utilities;
 
 
+
+
+
+@layer utilities {
+
+    .hexagon-wrapper {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit,calc(var(--s) + 2*var(--mh))) calc(var(--s)/2 + var(--mh));
+        justify-content:center;
+
+        --s: 100px;  /* size  */
+        --r: 0.85; /* ratio */
+
+        /* clip-path */
+        --h: 0.25;  
+        --v: 0.50;  
+        --hc:calc(clamp(0,var(--h),0.5) * var(--s)) ;
+        --vc:calc(clamp(0,var(--v),0.5) * var(--s) * var(--r)); 
+        
+        /*margin */
+        --mv: 0px; /* vertical */
+        --mh: calc(var(--mv) + (var(--s) - 2*var(--hc))/2); /* horizontal */
+        /* for the float*/
+        --f: calc(2*var(--s)*var(--r) + 4*var(--mv)  - 2*var(--vc) - 2px);
+
+        padding-bottom: 200px;
+    }
+
+    .hexagon-container {
+        grid-column: 1/-1;
+        font-size: 0; /*disable white space between inline block element */
+    }
+
+    .hexagon-container::before {
+        content: "";
+        width: calc(var(--s)/2 + var(--mh));
+        float: left;
+        height: 120%;
+        shape-outside: repeating-linear-gradient(     
+                        #000  0 2px,      
+                        #0000 0 calc(var(--f) + 2px));
+    }
+
+    .hexagon {
+        width: var(--s);
+        margin: var(--mv) var(--mh);
+        height: calc(var(--s)*var(--r)); 
+        display: inline-block;
+        font-size:initial;
+        clip-path: polygon(var(--hc) 0, calc(100% - var(--hc)) 0,100% var(--vc),100% calc(100% - var(--vc)), calc(100% - var(--hc)) 100%,var(--hc) 100%,0 calc(100% - var(--vc)),0 var(--vc));
+        background: red;
+        margin-bottom: calc(var(--mv) - var(--vc)); 
+    }
+    .hexagon:nth-child(odd) {
+        background: green;
+    }
+
+
+    .hexagon-container2 {
+        --hexagon-side-length: 80px;
+        --hexagon-container-width: calc(var(--hexagon-side-length)*2);
+        --hexagon-container-height: calc(var(--hexagon-side-length) * 2 * 0.866);
+        --gap-size: 0px;
+
+        display: flex;
+        gap: var(--gap-size) calc(2 * var(--gap-size) + var(--hexagon-side-length)) ;
+        flex-wrap: wrap;
+        
+
+        max-width: calc(8.9 * var(--hexagon-container-width));
+
+    }
+
+    .hexagon2 {
+        background-color: red;
+        outline: thick solid blue;
+        outline-offset: -4px;
+        width: var(--hexagon-container-width);
+        height: var(--hexagon-container-height);
+
+        clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
+
+        /* 
+            row overlap
+            0.51 for rounding error 
+        */
+        margin-bottom: calc( -0.50 * var(--gap-size) - var(--hexagon-container-height) * 0.51 );
+    }
+    .hexagon2:nth-child(odd) {
+        background-color: green;
+    }
+
+    .hexagon2:hover {
+        background-color: yellow;
+    }
+
+    .hexagon2:nth-child(5n - 4):nth-child(odd) {
+        margin-left: calc(var(--gap-size) + 0.75* var(--hexagon-container-width));
+    }
+
+    .hexagon-wrapper3{
+        --hexagon-side-length: 80px;
+        --hexagon-container-width: calc(var(--hexagon-side-length)*2);
+        --hexagon-container-height: calc(var(--hexagon-side-length) * 2 * 0.866);
+        --gap-size: 4px;
+        --overlap-shift: calc( (0.25)* var(--gap-size) - var(--hexagon-container-height) * 0.50);
+        --odd-row-shift: calc( 2 *var(--hexagon-container-height)  + 4* var(--gap-size) + 2* var(--overlap-shift) - 20px); 
+        
+        /* calc( 2 *var(--hexagon-container-height)  + 4* var(--gap-size) - 2 * var(--overlap-shift) -2px); */
+
+        display: flex;
+        width: 100%;
+        max-width: calc(8.9 * var(--hexagon-container-width));
+    }
+
+    .hexagon-container3 {
+        font-size: 0;
+        grid-column: 1/-1;
+        background-color: black;
+        padding-bottom: calc(var(--hexagon-container-height)/2);
+    }
+    .hexagon-container3::before {
+        content: "";
+        width: calc(0.75 * var(--hexagon-container-width) + var(--gap-size));
+        float: left;
+        height: 120%;
+        background-image: repeating-linear-gradient(180deg, gray, transparent 0 calc(var(--odd-row-shift)), gray 0 calc(var(--odd-row-shift) + 2px));
+        shape-outside: repeating-linear-gradient(180deg, gray, transparent 0 calc(var(--odd-row-shift)), gray 0 calc(var(--odd-row-shift) + 2px));
+    }
+
+    .hexagon3 {
+        display: inline-block;
+        font-size:initial;
+        background-color: red;
+        width: var(--hexagon-container-width);
+        height: var(--hexagon-container-height);
+
+        clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
+
+        margin: calc(0.5* var(--gap-size)) calc(var(--hexagon-side-length)/2 + var(--gap-size) );
+
+        /* 
+            row overlap
+            0.51 for rounding error 
+        */
+        margin-bottom: calc(var(--overlap-shift));
+    }
+    .hexagon3:nth-child(odd) {
+        background-color: green;
+    }
+
+    .hexagon3:hover {
+        background-color: yellow;
+        position:relative;
+        transform: scale(2);
+        z-index: 1000;
+    }
+
+    .inner-hexagon3 {
+        --border-width: 10px;
+        --middle-shift: calc(1.1547 * var(--border-width));
+        --top-shift: calc(var(--middle-shift) - var(--border-width) * 0.57735) ;
+        background-color: blue;
+        width:100%;
+        height: 100%;
+        clip-path: polygon(
+            calc(0% + var(--middle-shift)) 50%, 
+            calc(25% + var(--top-shift)) calc(0% +var(--border-width)), calc(75% - var(--top-shift)) calc(0% +var(--border-width)), 
+            calc(100% - var(--middle-shift)) 50%, 
+            calc(75% - var(--top-shift)) calc(100% - var(--border-width)), calc(25% + var(--top-shift)) calc(100% - var(--border-width))
+        );
+    }
+
+    
+
+}
+
+
 #gradient1 {
     background: radial-gradient(circle, rgb(0, 0, 0) 0%, transparent 55%, transparent 100%);
     z-index: 0;
@@ -20,19 +199,10 @@
     mix-blend-mode: color-dodge;
 }
 
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    display: grid;
-    place-items: center;
-    width: 100%;
-    height: 100vh;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 div {
@@ -42,7 +212,7 @@ div {
 
 #container {
     padding: 1rem;
-    height: 100vmin;
-    width: 100vmin;
+    height: 10rem;
+    width: 10rem;
     display: grid;
 }
