@@ -8,211 +8,154 @@
 
 @layer utilities {
 
-    .hexagon-wrapper {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(auto-fit,calc(var(--s) + 2*var(--mh))) calc(var(--s)/2 + var(--mh));
-        justify-content:center;
+    .hexagon-grid {
+        --number-of-hexagons-in-row: 10;
 
-        --s: 100px;  /* size  */
-        --r: 0.85; /* ratio */
+        --hexagon-side-length: 80px;
+        --gap-size: 4px;
+        --top-margin: -0.5rem;   /* has to be equal half the hexagon content height */
+        --shape-outside-height: 2px;
 
-        /* clip-path */
-        --h: 0.25;  
-        --v: 0.50;  
-        --hc:calc(clamp(0,var(--h),0.5) * var(--s)) ;
-        --vc:calc(clamp(0,var(--v),0.5) * var(--s) * var(--r)); 
+        --inner-hexagon-color: white;
+        --hexagon-border-color: black;
+        --hexagon-border-size: 4px;
+
+        --inner-hover-color: orange;
+        --inner-hover-border-color: rgb(128, 83, 0);
+    }
+
+    .hexagon-navbar {
+        --number-of-hexagons-in-row: 2.5;
+
+        --hexagon-side-length: 50px;
+        --gap-size: 4px;
+        --top-margin: -0.5rem;   /* has to be equal half the hexagon content height */
+        --shape-outside-height: 2px;
+
+        --inner-hexagon-color: white;
+        --hexagon-border-color: black;
+        --hexagon-border-size: 4px;
+
+        --inner-hover-color: orange;
+        --inner-hover-border-color: rgb(128, 83, 0);
+
         
-        /*margin */
-        --mv: 0px; /* vertical */
-        --mh: calc(var(--mv) + (var(--s) - 2*var(--hc))/2); /* horizontal */
-        /* for the float*/
-        --f: calc(2*var(--s)*var(--r) + 4*var(--mv)  - 2*var(--vc) - 2px);
+    }
 
-        padding-bottom: 200px;
+    @media (min-width: 768px) { 
+        .hexagon-navbar {
+            --number-of-hexagons-in-row: 5;
+        }
+        }
+
+    .hexagon-language-switch {
+        --number-of-hexagons-in-row: 2.5;
+
+        --hexagon-side-length: 50px;
+        --gap-size: 0px;
+        --top-margin: -0.5rem;   /* has to be equal half the hexagon content height */
+        --shape-outside-height: 2px;
+
+        --inner-hexagon-color: white;
+        --hexagon-border-color: black;
+        --hexagon-border-size: 4px;
+
+        --inner-hover-color: orange;
+        --inner-hover-border-color: rgb(128, 83, 0);
+    }
+
+    .hexagon-wrapper{
+        --hexagon-container-width: calc(var(--hexagon-side-length)*2);
+        --hexagon-container-height: calc(var(--hexagon-side-length) * 2 * 0.866);
+        --overlap-shift: calc( (0.5)* var(--gap-size) - var(--hexagon-container-height) * 0.5);
+        --odd-row-shift: calc(var(--hexagon-container-height) *0.95);  /* stops working if too many haxagon rows used  */
+        
+        display: flex;
+
+        border: solid 1px black;
+        padding-top: calc((-1)*  var(--top-margin));
+        width: 100%;
+        max-width: calc(var(--number-of-hexagons-in-row) * var(--hexagon-container-width));
     }
 
     .hexagon-container {
-        grid-column: 1/-1;
-        font-size: 0; /*disable white space between inline block element */
-    }
-
-    .hexagon-container::before {
-        content: "";
-        width: calc(var(--s)/2 + var(--mh));
-        float: left;
-        height: 120%;
-        shape-outside: repeating-linear-gradient(     
-                        #000  0 2px,      
-                        #0000 0 calc(var(--f) + 2px));
-    }
-
-    .hexagon {
-        width: var(--s);
-        margin: var(--mv) var(--mh);
-        height: calc(var(--s)*var(--r)); 
-        display: inline-block;
-        font-size:initial;
-        clip-path: polygon(var(--hc) 0, calc(100% - var(--hc)) 0,100% var(--vc),100% calc(100% - var(--vc)), calc(100% - var(--hc)) 100%,var(--hc) 100%,0 calc(100% - var(--vc)),0 var(--vc));
-        background: red;
-        margin-bottom: calc(var(--mv) - var(--vc)); 
-    }
-    .hexagon:nth-child(odd) {
-        background: green;
-    }
-
-
-    .hexagon-container2 {
-        --hexagon-side-length: 80px;
-        --hexagon-container-width: calc(var(--hexagon-side-length)*2);
-        --hexagon-container-height: calc(var(--hexagon-side-length) * 2 * 0.866);
-        --gap-size: 0px;
-
-        display: flex;
-        gap: var(--gap-size) calc(2 * var(--gap-size) + var(--hexagon-side-length)) ;
-        flex-wrap: wrap;
-        
-
-        max-width: calc(8.9 * var(--hexagon-container-width));
-
-    }
-
-    .hexagon2 {
-        background-color: red;
-        outline: thick solid blue;
-        outline-offset: -4px;
-        width: var(--hexagon-container-width);
-        height: var(--hexagon-container-height);
-
-        clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
-
-        /* 
-            row overlap
-            0.51 for rounding error 
-        */
-        margin-bottom: calc( -0.50 * var(--gap-size) - var(--hexagon-container-height) * 0.51 );
-    }
-    .hexagon2:nth-child(odd) {
-        background-color: green;
-    }
-
-    .hexagon2:hover {
-        background-color: yellow;
-    }
-
-    .hexagon2:nth-child(5n - 4):nth-child(odd) {
-        margin-left: calc(var(--gap-size) + 0.75* var(--hexagon-container-width));
-    }
-
-    .hexagon-wrapper3{
-        --hexagon-side-length: 80px;
-        --hexagon-container-width: calc(var(--hexagon-side-length)*2);
-        --hexagon-container-height: calc(var(--hexagon-side-length) * 2 * 0.866);
-        --gap-size: 4px;
-        --overlap-shift: calc( (0.25)* var(--gap-size) - var(--hexagon-container-height) * 0.50);
-        --odd-row-shift: calc( 2 *var(--hexagon-container-height)  + 4* var(--gap-size) + 2* var(--overlap-shift) - 20px); 
-        
-        /* calc( 2 *var(--hexagon-container-height)  + 4* var(--gap-size) - 2 * var(--overlap-shift) -2px); */
-
-        display: flex;
-        width: 100%;
-        max-width: calc(8.9 * var(--hexagon-container-width));
-    }
-
-    .hexagon-container3 {
         font-size: 0;
         grid-column: 1/-1;
-        background-color: black;
+        
         padding-bottom: calc(var(--hexagon-container-height)/2);
     }
-    .hexagon-container3::before {
+    .hexagon-container::before {
         content: "";
         width: calc(0.75 * var(--hexagon-container-width) + var(--gap-size));
         float: left;
-        height: 120%;
-        background-image: repeating-linear-gradient(180deg, gray, transparent 0 calc(var(--odd-row-shift)), gray 0 calc(var(--odd-row-shift) + 2px));
-        shape-outside: repeating-linear-gradient(180deg, gray, transparent 0 calc(var(--odd-row-shift)), gray 0 calc(var(--odd-row-shift) + 2px));
+        height: 100%;
+      
+     /*  background-image: repeating-linear-gradient(180deg, gray, transparent 0 calc(var(--odd-row-shift)), gray 0 calc(var(--odd-row-shift) + var(--shape-outside-height))); */
+       
+        shape-outside: repeating-linear-gradient(180deg, gray, transparent 0 calc(var(--odd-row-shift)), gray 0 calc(var(--odd-row-shift) + var(--shape-outside-height)));
     }
 
-    .hexagon3 {
+    .hexagon{
         display: inline-block;
-        font-size:initial;
-        background-color: red;
+        font-size:0;
+        background-color: var(--hexagon-border-color);
         width: var(--hexagon-container-width);
         height: var(--hexagon-container-height);
 
         clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
 
-        margin: calc(0.5* var(--gap-size)) calc(var(--hexagon-side-length)/2 + var(--gap-size) );
+        margin: var(--top-margin) calc(var(--hexagon-side-length)/2 + var(--gap-size) );
 
         /* 
             row overlap
             0.51 for rounding error 
         */
-        margin-bottom: calc(var(--overlap-shift));
+        margin-top: var(--top-margin);
+        margin-bottom: calc(var(--overlap-shift) - var(--top-margin));
+        
+
+        /* animation */
+        position: relative;
+        transform: scale(1);
+        transition: all 0.5s;
     }
-    .hexagon3:nth-child(odd) {
-        background-color: green;
+    .hexagon:nth-child(odd) {
+        background-color: var(--hexagon-border-color);
     }
 
-    .hexagon3:hover {
-        background-color: yellow;
+    .hexagon:hover {
+        background-color: var(--inner-hover-border-color);
         position:relative;
-        transform: scale(2);
+        transform: scale(1.0);
         z-index: 1000;
     }
 
-    .inner-hexagon3 {
-        --border-width: 10px;
+    .inner-hexagon {
+        --border-width: var(--hexagon-border-size);
         --middle-shift: calc(1.1547 * var(--border-width));
         --top-shift: calc(var(--middle-shift) - var(--border-width) * 0.57735) ;
-        background-color: blue;
+        background-color: var(--inner-hexagon-color);
         width:100%;
         height: 100%;
+        font-size: initial;
+
         clip-path: polygon(
             calc(0% + var(--middle-shift)) 50%, 
             calc(25% + var(--top-shift)) calc(0% +var(--border-width)), calc(75% - var(--top-shift)) calc(0% +var(--border-width)), 
             calc(100% - var(--middle-shift)) 50%, 
             calc(75% - var(--top-shift)) calc(100% - var(--border-width)), calc(25% + var(--top-shift)) calc(100% - var(--border-width))
         );
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .inner-hexagon:hover {
+        background-color: var(--inner-hover-color);
     }
 
     
 
 }
 
-
-#gradient1 {
-    background: radial-gradient(circle, rgb(0, 0, 0) 0%, transparent 55%, transparent 100%);
-    z-index: 0;
-    
-    
-}
-
-@keyframes Scroll {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 33%; }
-}
-
-#gradient2 {
-    background: radial-gradient(circle, rgb(255, 255, 255) 0%, rgb(255, 0, 0) 55%, transparent 100%);
-    mix-blend-mode: color-dodge;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-div {
-    grid-column: 1;
-    grid-row: 1;
-}
-
-#container {
-    padding: 1rem;
-    height: 10rem;
-    width: 10rem;
-    display: grid;
-}

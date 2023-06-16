@@ -10,6 +10,7 @@ import { TestMolecule } from "./components/TestMolecule"
 import { TestHexagon } from "./components/TestHexagon"
 import { TestHexagon2 } from "./components/TestHexagon2"
 import { TestHexagon3 } from "./components/TestHexagon3"
+import { Navbar } from "./components/Navbar"
 
 interface Home {
   params: { lang: Locale }
@@ -22,6 +23,8 @@ export default async function Home({ params: { lang } }: Home) {
 
   return (
     <>
+      <Navbar />
+
       <div>
         <LocaleSwitcher />
         <p>Current locale: {lang}</p>
