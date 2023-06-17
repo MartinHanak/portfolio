@@ -11,6 +11,7 @@ import { TestHexagon } from "./components/TestHexagon"
 import { TestHexagon2 } from "./components/TestHexagon2"
 import { TestHexagon3 } from "./components/TestHexagon3"
 import { Navbar } from "./components/Navbar"
+import { Footer } from "./components/Footer"
 import { Hero } from "./components/Hero"
 import { Container } from "./components/Containter"
 
@@ -37,7 +38,7 @@ export default async function Home({ params: { lang } }: Home) {
 
       <TestHexagon3 />
 
-      <ContactForm />
+      <Footer />
     </>
   )
 }

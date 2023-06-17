@@ -25,12 +25,15 @@ module.exports = {
             opacity: 1,
             transform: 'scale(1.0)'
           },
-          '20%' : {
+          '10%' : {
             opacity: 0,
             transform: 'scale(1.0)'
           },
-          '50%' : {
+          '30%': {
             opacity: 0,
+          },
+          '40%' : {
+            opacity: 1,
             transform: 'scale(1.0)'
           },
           '70%' : {
@@ -53,8 +56,11 @@ module.exports = {
             opacity: 1,
             transform: 'scale(1.0)'
           },
-          '50%' : {
+          '40%': {
             opacity: 1,
+          },
+          '50%' : {
+            opacity: 0,
             transform: 'scale(1.0)'
           },
           '70%' : {
