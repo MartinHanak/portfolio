@@ -13,7 +13,7 @@ export function Navbar() {
 
                     <div className="md:hidden">
                         <div className="hexagon">
-                            <a href="">
+                            <a>
                                 <div className="inner-hexagon">
                                     Menu
                                 </div>

@@ -2,11 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+/* css variable controlling number of hexagons in one row */
+:root {
+    --hexagons-in-row: 14;
 
+    --gap-size: 4px;
 
+    --hexagon-side-length: 50px;
+    --hexagon-container-width: calc(var(--hexagon-side-length)*2);
+    --hexagon-container-height: calc(var(--hexagon-side-length) * 2 * 0.866);
+    --hexagon-border-color: black;
+}
 
 
 @layer utilities {
+
+    .hero-hexagon-grid {
+
+    }
+
+    .absolute-hexagon {
+
+        display: block;
+        background-color: var(--hexagon-border-color);
+        width: var(--hexagon-container-width);
+        height: var(--hexagon-container-height);
+
+        clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
+        margin: 0;
+
+        /* animation */
+        position: absolute;
+        transform: scale(1);
+        transition: all 0.5s;
+    }
 
     .hexagon-grid {
         --number-of-hexagons-in-row: 10;
@@ -64,6 +93,22 @@
         --inner-hover-border-color: rgb(128, 83, 0);
     }
 
+    .hero-grid {
+        --number-of-hexagons-in-row: 8;
+
+        --hexagon-side-length: 70px;
+        --gap-size: 4px;
+        --top-margin: -0.5rem;   /* has to be equal half the hexagon content height */
+        --shape-outside-height: 2px;
+
+        --inner-hexagon-color: black;
+        --hexagon-border-color: black;
+        --hexagon-border-size: 4px;
+
+        --inner-hover-color: black;
+        --inner-hover-border-color: black;
+    }
+
     .hexagon-wrapper{
         --hexagon-container-width: calc(var(--hexagon-side-length)*2);
         --hexagon-container-height: calc(var(--hexagon-side-length) * 2 * 0.866);
@@ -75,12 +120,13 @@
         border: solid 1px black;
         padding-top: calc((-1)*  var(--top-margin));
         width: 100%;
-        max-width: calc(var(--number-of-hexagons-in-row) * var(--hexagon-container-width));
+        max-width: calc( (var(--number-of-hexagons-in-row)) * var(--hexagon-container-width));
     }
 
     .hexagon-container {
         font-size: 0;
         grid-column: 1/-1;
+        width: 100%;
         
         padding-bottom: calc(var(--hexagon-container-height)/2);
     }
@@ -155,7 +201,6 @@
         background-color: var(--inner-hover-color);
     }
 
-    
 
 }
 

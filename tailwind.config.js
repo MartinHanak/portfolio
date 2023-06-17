@@ -12,6 +12,38 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      aspectRatio: {
+        'hexagon': '1.1547',
+      },
+      animation: {
+        wave: 'waveDisappearAppear 20s linear infinite'
+      },
+      keyframes: {
+        waveDisappearAppear: {
+          '0%' : {
+            opacity: 1,
+            transform: 'scale(1.0)'
+          },
+          '20%' : {
+            opacity: 0,
+            transform: 'scale(1.0)'
+          },
+          '50%' : {
+            opacity: 0,
+            transform: 'scale(1.0)'
+          },
+          '70%' : {
+            opacity: 1,
+            transform: 'scale(1.0)'
+          },
+          '90%' : {
+            opacity: 1
+          },
+          '100%' : {
+            opacity: 1
+          }
+        }
+      }
     },
   },
   plugins: [],
