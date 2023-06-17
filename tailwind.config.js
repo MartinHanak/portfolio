@@ -16,7 +16,8 @@ module.exports = {
         'hexagon': '1.1547',
       },
       animation: {
-        wave: 'waveDisappearAppear 20s linear infinite'
+        wave: 'waveDisappearAppear 20s linear infinite',
+        waveReverse: 'waveReverse 20s linear infinite'
       },
       keyframes: {
         waveDisappearAppear: {
@@ -41,6 +42,30 @@ module.exports = {
           },
           '100%' : {
             opacity: 1
+          }
+        },
+        waveReverse: {
+          '0%' : {
+            opacity: 0,
+            transform: 'scale(1.0)'
+          },
+          '20%' : {
+            opacity: 1,
+            transform: 'scale(1.0)'
+          },
+          '50%' : {
+            opacity: 1,
+            transform: 'scale(1.0)'
+          },
+          '70%' : {
+            opacity: 0,
+            transform: 'scale(1.0)'
+          },
+          '90%' : {
+            opacity: 0
+          },
+          '100%' : {
+            opacity: 0
           }
         }
       }

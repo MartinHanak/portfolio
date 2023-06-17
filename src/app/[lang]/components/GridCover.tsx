@@ -1,6 +1,8 @@
 "use client"
 import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 
+import backgroundImage from '../../../../public/test_image.jpg';
+
 
 
 export function GridCover() {
@@ -47,6 +49,8 @@ export function GridCover() {
 
             const hexagonArray = [];
 
+            const time = Date.now()
+
             for (let col = 0; col < rowLength; col++) {
                 for (let row = 0; row < rowNumber; row++) {
                     // determine position (x,y)
@@ -64,8 +68,7 @@ export function GridCover() {
 
                     // decide if displayed at all (corners can be omitted, center around text omitted)
                     let hide = false;
-                    if ((col === 0 || (col === rowLength - 1))
-                        && (row === 0 || (row === rowNumber - 1 && rowNumber % 2 === 0))) {
+                    if ((col === 0 && row === 0) || (col === rowLength - 1 && row === rowNumber - 1) && rowLength % 2 === 0) {
                         hide = true;
                     }
 
@@ -73,10 +76,21 @@ export function GridCover() {
                     const hexagonCenter = [x + hexagonWidth / 2, y + hexagonHeight / 2];
                     let delay = Math.sqrt((hexagonCenter[0] - center[0]) ** 2 + (hexagonCenter[1] - center[1]) ** 2) / waveSpeed; // in s
 
+                    // background image shift
+                    //      image size set to container width + auto height
+                    //      background position given by x, y WITHOUT GAPS
+                    let backgroundPoxX = x - col * gapSize;
+                    let backgroundPoxY = y - row * gapSize;
+
                     hexagonArray.push((
                         <div
-                            key={`row${row}col${col}`}
-                            style={{ left: x, top: y, animationDelay: `${delay}s` }}
+                            key={`col${col}row${row}time${time}`} // unique key to force rerender if size changed
+                            style={{
+                                left: x, top: y, animationDelay: `${delay}s`,
+                                //  backgroundImage: `url('${backgroundImage.src}')`,
+                                backgroundSize: `${grid.current.offsetWidth}px auto`,
+                                backgroundPosition: `left -${backgroundPoxX}px top -${backgroundPoxY}px`
+                            }}
                             className={`absolute-hexagon w-4 h-4 absolute top-0 left-0  ${hide ? 'opacity-0' : 'animate-wave'}`}>
 
                         </div>
@@ -101,7 +115,8 @@ export function GridCover() {
     }, [])
 
     return (
-        <div ref={grid} className="hero-hexagon-grid absolute top-0 left-0 w-full h-full ">
+        <div ref={grid}
+            className="hero-hexagon-grid absolute top-0 left-0 w-full h-full ">
             {hexagonChildren}
         </div>
     )

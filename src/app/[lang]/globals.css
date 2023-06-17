@@ -4,7 +4,7 @@
 
 /* css variable controlling number of hexagons in one row */
 :root {
-    --hexagons-in-row: 14;
+    --hexagons-in-row: 9;
 
     --gap-size: 4px;
 
@@ -12,6 +12,15 @@
     --hexagon-container-width: calc(var(--hexagon-side-length)*2);
     --hexagon-container-height: calc(var(--hexagon-side-length) * 2 * 0.866);
     --hexagon-border-color: black;
+
+    --background-hexagon-image: url('/mobile_test_image.jpg');
+}
+
+@media (min-width: 768px) { 
+    :root {
+        --hexagons-in-row: 14;
+        --background-hexagon-image: url('/test_image.jpg');
+    }
 }
 
 
@@ -24,17 +33,21 @@
     .absolute-hexagon {
 
         display: block;
-        background-color: var(--hexagon-border-color);
+
         width: var(--hexagon-container-width);
         height: var(--hexagon-container-height);
 
         clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
         margin: 0;
 
-        /* animation */
+        /* animation - position x and y given by inline style */
         position: absolute;
         transform: scale(1);
         transition: all 0.5s;
+
+        /* background */
+        background-image: var(--background-hexagon-image); /* does not work in Next.js */
+        background-repeat: no-repeat;
     }
 
     .hexagon-grid {
