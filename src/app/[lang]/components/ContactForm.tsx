@@ -31,14 +31,18 @@ export function ContactForm() {
     //ERROR: generateStaticParams causes submit not to work
     // https://github.com/vercel/next.js/issues/49408
     return (
-        <form action={createMessage}>
-            <label htmlFor="email">Email</label>
-            <input type="email" name="email" id="email" required />
+        <form id="Contact" action={createMessage} className="text-white flex flex-col justify-center items-start px-8 md:order-2 mb-16">
 
-            <label htmlFor="message">Message</label>
-            <textarea name="message" id="message" cols={30} rows={10}></textarea>
+            <h3 className='font-bold text-4xl mb-4'>Contact Me</h3>
 
-            <button type="submit" >Send Message</button>
+            <label className="mb-2" htmlFor="email">Your Email</label>
+            <input className="text-black mb-4 w-3/4 p-2 rounded-sm" type="email" name="email" id="email" required />
+
+            <label className="mb-2" htmlFor="message">Message</label>
+            <textarea rows={7} className="text-black mb-4 w-full p-4 rounded-sm" name="message" id="message"></textarea>
+
+            <button className="rounded-sm font-bold border-solid border-2 border-white px-4 py-2 w-full hover:bg-white hover:text-black" type="submit" >Send Message</button>
         </form>
+
     )
 }

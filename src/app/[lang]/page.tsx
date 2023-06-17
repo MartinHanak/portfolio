@@ -34,10 +34,6 @@ export default async function Home({ params: { lang } }: Home) {
       </Container>
 
 
-
-
-      <TestHexagon3 />
-
       <Footer />
     </>
   )

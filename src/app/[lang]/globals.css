@@ -78,8 +78,8 @@
         --hexagon-border-color: black;
         --hexagon-border-size: 4px;
 
-        --inner-hover-color: orange;
-        --inner-hover-border-color: rgb(128, 83, 0);
+        /*--inner-hover-color: orange; */
+        --inner-hover-border-color: black;
 
         
     }
@@ -183,9 +183,9 @@
     }
 
     .hexagon:hover {
-        background-color: var(--inner-hover-border-color);
+        /*background-color: var(--inner-hover-border-color); */
         position:relative;
-        transform: scale(1.0);
+        transform: scale(1.2);
         z-index: 1000;
     }
 
@@ -211,7 +211,7 @@
     }
 
     .inner-hexagon:hover {
-        background-color: var(--inner-hover-color);
+       /* background-color: var(--inner-hover-color); */
     }
 
 

@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { LanguageSwitch } from "./LanguageSwitch"
 const pageIds: string[] = ["Home", "About", "Skills", "Projects", "Contact"]
+const hoverColors: string[] = ["hover:bg-red-500", "hover:bg-yellow-500", "hover:bg-cyan-500", "hover:bg-orange-500", "hover:bg-green-500",]
 
 export function Navbar() {
     return (
@@ -14,7 +15,7 @@ export function Navbar() {
                     <div className="md:hidden">
                         <div className="hexagon">
                             <a>
-                                <div className="inner-hexagon">
+                                <div className="inner-hexagon font-bold text-lg">
                                     Menu
                                 </div>
                             </a>
@@ -22,11 +23,11 @@ export function Navbar() {
                     </div>
 
 
-                    {pageIds.map((elementID: string) => {
+                    {pageIds.map((elementID: string, index: number) => {
                         return (
                             <div key={elementID} className="hexagon">
                                 <a href={`#${elementID}`}>
-                                    <div className="inner-hexagon">
+                                    <div className={`inner-hexagon font-bold text-lg ${hoverColors[index]}`}>
                                         {elementID}
                                     </div>
                                 </a>
