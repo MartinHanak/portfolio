@@ -7,6 +7,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+       gridTemplateRows: { 
+          'content': 'auto 1fr',
+       },
+       gridTemplateColumns: { 
+          'third': '1fr 2fr',
+       },
       fontFamily: {
         mono: ['var(--font-IBM)'],
       },
@@ -20,7 +26,8 @@ module.exports = {
       },
       animation: {
         wave: 'waveDisappearAppear 20s linear infinite',
-        waveReverse: 'waveReverse 20s linear infinite'
+        waveReverse: 'waveReverse 20s linear infinite',
+        slideIn: 'slideIn 1s ease-in-out'
       },
       keyframes: {
         waveDisappearAppear: {
@@ -75,6 +82,14 @@ module.exports = {
           },
           '100%' : {
             opacity: 0
+          }
+        },
+        slideIn: {
+          '0%' : {
+            transform: 'translateX(-100%)'
+          },
+          '100%' : {
+            transform: 'translateX(0%)'
           }
         }
       }

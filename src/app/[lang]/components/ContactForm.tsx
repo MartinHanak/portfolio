@@ -1,10 +1,15 @@
+"use client"
 import { prisma } from "../../../db"
 import { redirect } from 'next/navigation';
 import sendMail from "../util/mail";
+import { FormEvent } from "react";
 
 
 export function ContactForm() {
 
+
+    /* server action solution - currently does not work with SSG in Next.js */
+    /*
     const createMessage = async (data: FormData) => {
         "use server"
 
@@ -26,12 +31,21 @@ export function ContactForm() {
         redirect('/')
 
     }
+    */
+
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        console.log('submitting...');
+    }
 
 
     //ERROR: generateStaticParams causes submit not to work
     // https://github.com/vercel/next.js/issues/49408
     return (
-        <form id="Contact" action={createMessage} className="text-white flex flex-col justify-center items-start  md:order-2 mb-16">
+        <form id="Contact" className="text-white flex flex-col justify-center items-start  md:order-2 mb-16"
+            onSubmit={handleSubmit}
+        >
 
             <h3 className='font-bold text-4xl mb-4'>Contact Me</h3>
 

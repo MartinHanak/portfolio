@@ -30,6 +30,7 @@ export function middleware(request: NextRequest) {
        '/favicon.ico',
        '/test_image.jpg',
        '/next.svg',
+       '/react.svg',
        '/mobile_test_image.jpg',
        // Your other files in `public`
     ].includes(pathname)
