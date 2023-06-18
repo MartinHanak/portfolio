@@ -31,7 +31,7 @@ export function ContactForm() {
     //ERROR: generateStaticParams causes submit not to work
     // https://github.com/vercel/next.js/issues/49408
     return (
-        <form id="Contact" action={createMessage} className="text-white flex flex-col justify-center items-start px-8 md:order-2 mb-16">
+        <form id="Contact" action={createMessage} className="text-white flex flex-col justify-center items-start  md:order-2 mb-16">
 
             <h3 className='font-bold text-4xl mb-4'>Contact Me</h3>
 

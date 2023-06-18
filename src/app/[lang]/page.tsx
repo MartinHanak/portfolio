@@ -14,6 +14,9 @@ import { Navbar } from "./components/Navbar"
 import { Footer } from "./components/Footer"
 import { Hero } from "./components/Hero"
 import { Container } from "./components/Containter"
+import { About } from "./components/About"
+import { Skills } from "./components/Skills"
+import { Projects } from "./components/Projects"
 
 interface Home {
   params: { lang: Locale }
@@ -30,8 +33,16 @@ export default async function Home({ params: { lang } }: Home) {
 
 
       <Container>
+
         <Hero />
-      </Container>
+
+        <About />
+
+        <Skills />
+
+        <Projects />
+
+      </Container >
 
 
       <Footer />

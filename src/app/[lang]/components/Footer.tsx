@@ -13,9 +13,9 @@ export function Footer() {
 
 
     return (
-        <footer className="w-full bg-gray-950 px-4 py-16">
+        <footer className="w-full bg-gray-900 py-16">
             <Container>
-                <div className="grid grid-rows-2 grid-cols-1 md:grid-rows-1 md:grid-cols-2">
+                <div className="grid grid-rows-2 grid-cols-1 gap-8 md:grid-rows-1 md:grid-cols-2">
                     <ContactForm />
                     <ContactInfo />
                 </div>
