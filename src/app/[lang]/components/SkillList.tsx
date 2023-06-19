@@ -23,40 +23,43 @@ export function SkillList({ name }: SkillList) {
 
     const [nameIconList, setNameIconList] = useState(getNameIconList(name));
 
-    const [timingObject, setTimingObject] = useState<KeyframeEffectOptions | null>(null);
-    const [keyframesObject, setKeyframesObject] = useState<Keyframe[] | null>(null);
-
     const cardElementArrayRef = useRef<HTMLDivElement[] | null[]>([]);
 
     useEffect(() => {
 
-        const newTimingObject = {
+        const rotationTiming: KeyframeAnimationOptions = {
             duration: timePerItem * 2 * 1000 * nameIconList.length,
             iterations: Infinity,
-            easing: "ease-in-out",
+            composite: 'add'
         }
 
-        const newKeyframes = [
-            { transform: 'translateY(0%)', opacity: '1' },
-            { transform: 'translateY(50%) rotate(0deg)', opacity: '1' },
-            { transform: 'translateY(50%) rotate(45deg)', opacity: '1' },
-            { transform: 'translateY(50%) rotate(46deg)', opacity: '0', animationTimingFunction: 'ease' },
-            { transform: 'translateY(50%) rotate(90deg)', opacity: '0' },
-            { transform: 'translateY(50%) rotate(180deg)', opacity: '0' },
-            { transform: 'translateY(50%) rotate(270deg)', opacity: '0' },
-            { transform: 'translateY(50%) rotate(315deg)', opacity: '0', display: 'none' },
-            { transform: 'translateY(50%) rotate(360deg)', opacity: '1' },
-            { transform: 'translateY(0%) rotate(360deg)', opacity: '1' },
+        const shiftTiming: KeyframeAnimationOptions = {
+            duration: timePerItem * 2 * 1000 * nameIconList.length,
+            iterations: Infinity,
+            composite: 'add'
+        }
+
+        const rotationKeyframes = [
+            { transform: 'rotate(0deg)' },
+            { transform: 'rotate(360deg)' },
+        ]
+
+        const shiftKeyframes = [
+            { transform: 'translateY(0%)' },
+            { transform: 'translateY(50%)' },
         ]
 
 
-        setTimingObject(newTimingObject);
 
-        setKeyframesObject(newKeyframes)
 
-        cardElementArrayRef.current.map((element) => {
+
+        cardElementArrayRef.current.map((element, index) => {
             if (element) {
-                element.animate(newKeyframes, newTimingObject)
+                const shiftAnimation = element.animate(shiftKeyframes, shiftTiming);
+                const rotationAnimation = element.animate(rotationKeyframes, rotationTiming);
+
+                shiftAnimation.currentTime = index * timePerItem * 1000;
+                rotationAnimation.currentTime = index * timePerItem * 1000;
             }
         })
 
@@ -70,10 +73,11 @@ export function SkillList({ name }: SkillList) {
             return (
                 <div key={NameIcon.name}
                     ref={element => cardElementArrayRef.current[index] = element}
-                    style={{ transformOrigin: 'center 300%' }}
+                    style={{ transformOrigin: 'center 200%' }}
                     className='w-32 h-48 flex flex-col justify-center items-center px-4
                 border-solid border-black border-2 rounded-lg bg-white
                 absolute right-1/2 translate-x-1/2 
+                hover:bg-yellow-300
                 '>
 
                     <h4 className='text-lg mb-2'>{NameIcon.name}</h4>
