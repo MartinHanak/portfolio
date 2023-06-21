@@ -1,6 +1,7 @@
 import { threadId } from "worker_threads";
 
-export type performantAnimationProperties = "opacity" | "translateY" | "translateX" | "scale" | "rotate";
+export type performantAnimationProperties = "opacity" | "translateY" | "translateX" | "scale" | "rotate" | "translateZ" ;
+export type allowed3DProperties = "rotate3D";
 
 export interface propertyValue {
     property: performantAnimationProperties,
@@ -8,8 +9,15 @@ export interface propertyValue {
     units?: string
 }
 
+export interface propertyValue3D {
+    property: allowed3DProperties,
+    vector: [number, number, number],
+    value: number,
+    units?: string
+}
+
 export interface keyframeValue {
-    keyValuePairs: propertyValue[],
+    keyValuePairs: (propertyValue | propertyValue3D)[],
     duration: number // in ms
 }
 
@@ -67,11 +75,20 @@ export default class KeyframeGenerator {
                         ...keyframe,
                         opacity: keyValue.value
                     }
-                } else {
+                } else if (keyValue.property === 'rotate3D') {
                     keyframe = {
                         ...keyframe,
-                        transform: `${keyValue.property}(${keyValue.value}${keyValue.units})`
+                        transform: `${keyValue.property}(${keyValue.vector[0]}, ${keyValue.vector[1]},${keyValue.vector[2]} ,${keyValue.value}${keyValue.units})`
                     }
+                } else {
+                    if(keyframe["transform"]) {
+                        keyframe["transform"] += ` ${keyValue.property}(${keyValue.value}${keyValue.units})`
+                    } else {
+                        keyframe = {
+                            ...keyframe,
+                            transform: `${keyValue.property}(${keyValue.value}${keyValue.units})`
+                        }
+                    }   
                 }
             })
 

@@ -3,6 +3,7 @@ import { MutableRefObject, useEffect } from "react";
 import RotationKeyframeGenerator from "./RotationKeyframeGenerator";
 import ShiftKeyframeGenerator from "./ShiftKeyframeGenerator";
 import { CardAnimator } from "./CardAnimator";
+import StackKeyframeGenerator from "./StackKeyframeGenerator";
 
 // assumes that elements have set transform origin in CSS
 
@@ -101,7 +102,7 @@ export function useCardAnimation(arrayRef: MutableRefObject<HTMLDivElement[] | n
 
         
 
-
+        /*
        const rotationGenerator = new RotationKeyframeGenerator(cards.length);
 
        const rotationAnimator = new CardAnimator(cards, rotationGenerator);
@@ -116,6 +117,11 @@ export function useCardAnimation(arrayRef: MutableRefObject<HTMLDivElement[] | n
 
         rotationAnimator.playAnimation();
         shiftAnimator.playAnimation()
+        */
+       const unstackGenerator = new StackKeyframeGenerator(cards.length);
+        const animator = new CardAnimator(cards,unstackGenerator);
+        animator.playAnimation(undefined,100);
+        console.log(unstackGenerator.getKeyframes().keyframes)
 
 
         // bind click events

@@ -35,7 +35,7 @@ export function SkillList({ name }: SkillList) {
                     ref={element => cardElementArrayRef.current[index] = element}
                     className='w-32 h-48 flex flex-col justify-center items-center px-4
                 border-solid border-black border-2 rounded-lg bg-white
-                absolute right-1/2 translate-x-1/2 origin-card-animation
+                absolute right-1/2 translate-x-1/2 origin-center
                 hover:bg-yellow-300'
                 >
 

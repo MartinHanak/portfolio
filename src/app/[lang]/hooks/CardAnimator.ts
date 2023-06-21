@@ -9,7 +9,7 @@ export class CardAnimator {
         this.keyframeGenerator = keyframeGenerator
     }
 
-    playAnimation(composite?: CompositeOperation) {
+    playAnimation(composite?: CompositeOperation, indexDelay?: number) {
         const options = this.keyframeGenerator.getKeyframeAnimationOptions();
         const keyframes = this.keyframeGenerator.getKeyframes().keyframes;
 
@@ -26,7 +26,9 @@ export class CardAnimator {
 
         this.cards.forEach((card, index: number) => {
             const animation = card.animate(keyframes, modifiedOptions)
-            animation.currentTime = index * this.keyframeGenerator.timePerItem;
+            if(indexDelay) {
+                animation.currentTime = index * indexDelay;
+            }
         })
 
     }

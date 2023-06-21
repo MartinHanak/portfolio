@@ -11,7 +11,7 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
         const options : KeyframeAnimationOptions = {
             duration: this.getDuration(),
             iterations: Infinity,
-            id: "rotation"
+            id: "rotation",
         }
         return options;
     }
