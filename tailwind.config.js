@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      transformOrigin: {
+        'card-animation': 'center 250%',
+      },
        gridTemplateRows: { 
           'content': 'auto 1fr',
        },
