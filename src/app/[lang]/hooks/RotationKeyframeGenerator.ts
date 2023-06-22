@@ -36,6 +36,9 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
 
         const oneRotationAngle = 2 * this.maxDisplayedAngle / this.displayedObjects;
 
+        const perspective = 500;
+        const zShift = 10;
+
         // offset for even numbers
         let angleOffset = 0;
         if(this.displayedObjects % 2 === 0) {
@@ -44,10 +47,21 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
 
         // initial = 0 rotaion
         frameValues.push({
-            keyValuePairs: [{
+            keyValuePairs: [ {
+                property: 'perspective',
+                value: perspective,
+                units: 'px'
+            }, {
                 property: "rotate",
                 value: angleOffset,
                 units: 'deg'
+            },{
+                property: "opacity",
+                value: 1,
+            },  {
+                property: 'translateZ',
+                value: zShift,
+                units: 'px'
             }],
             duration: 0
         })
@@ -56,8 +70,18 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
             keyValuePairs: [{
                 property: "rotate",
                 value: angleOffset,
-                units: 'deg'
-                
+                units: 'deg'  
+            },{
+                property: "opacity",
+                value: 1,
+            },  {
+                property: 'translateZ',
+                value: zShift,
+                units: 'px'
+            },  {
+                property: 'perspective',
+                value: perspective,
+                units: 'px'
             }],
             duration: stationaryTime
         })
@@ -72,7 +96,18 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                     property: "rotate",
                     value: i * oneRotationAngle + angleOffset,
                     units: 'deg'  
-                } ],
+                },{
+                    property: "opacity",
+                    value: 1,
+                },  {
+                    property: 'translateZ',
+                    value: zShift,
+                    units: 'px'
+                },  {
+                    property: 'perspective',
+                    value: perspective,
+                    units: 'px'
+                }],
                 duration: transitionTime
             })
 
@@ -82,13 +117,47 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                     property: "rotate",
                     value: i * oneRotationAngle + angleOffset,
                     units: 'deg'
-                } ],
+                },{
+                    property: "opacity",
+                    value: 1,
+                },  {
+                    property: 'translateZ',
+                    value: zShift,
+                    units: 'px'
+                },  {
+                    property: 'perspective',
+                    value: perspective,
+                    units: 'px'
+                }],
                 duration: stationaryTime
             })
            
         }
 
         // transition to 90, 90 to 180, 180 to 270, 270 to displayed angle
+        const to90duration = 100;
+        frameValues.push({
+                keyValuePairs: [{
+                    property: "rotate", 
+                    value: 75,
+                    units: 'deg'
+                }, {
+                    property: "opacity",
+                    value: 0,
+                },  {
+                    property: 'translateZ',
+                    value: zShift,
+                    units: 'px'
+                },  {
+                    property: 'perspective',
+                    value: perspective,
+                    units: 'px'
+                }
+                ],
+            
+                duration: to90duration
+            })
+
         for(const hiddenAngle of [90, 180, 270]) {
             frameValues.push({
                 keyValuePairs: [{
@@ -98,10 +167,18 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                 }, {
                     property: "opacity",
                     value: 0,
+                },  {
+                    property: 'translateZ',
+                    value: zShift,
+                    units: 'px'
+                },  {
+                    property: 'perspective',
+                    value: perspective,
+                    units: 'px'
                 }
                 ],
             
-                duration: hiddenTime / 3
+                duration: hiddenTime / 3 - to90duration
             })
         }
 
@@ -119,6 +196,14 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                 }, {
                     property: "opacity",
                     value: 1,
+                },  {
+                    property: 'translateZ',
+                    value: zShift/2,
+                    units: 'px'
+                },  {
+                    property: 'perspective',
+                    value: perspective,
+                    units: 'px'
                 }],
                 duration: transitionTime
             })
@@ -133,6 +218,14 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                     }, {
                         property: "opacity",
                         value: 1,
+                    },  {
+                        property: 'translateZ',
+                        value: zShift/2,
+                        units: 'px'
+                    },  {
+                        property: 'perspective',
+                        value: perspective,
+                        units: 'px'
                     }],
                     duration: stationaryTime
                 })

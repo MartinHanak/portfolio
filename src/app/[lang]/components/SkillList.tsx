@@ -28,15 +28,29 @@ export function SkillList({ name }: SkillList) {
 
     const animation = useCardAnimation(cardElementArrayRef, nameIconList.length);
 
-    return (<div className='relative min-h-[18rem] '>
+    return (<div
+        // parent has to have preserve-3d to be able to use translateZ as z index
+        style={{ transformStyle: 'preserve-3d' }}
+        className='relative min-h-[18rem] '>
         {nameIconList.map((NameIcon: NameIcon, index: number) => {
+            let zIndex = 1
+            if (index < nameIconList.length / 2) {
+                zIndex = nameIconList.length + index
+            } else {
+                zIndex = nameIconList.length - (nameIconList.length - index)
+            }
+
             return (
+
+
+
                 <div key={NameIcon.name}
                     ref={element => cardElementArrayRef.current[index] = element}
-                    className='w-32 h-48 flex flex-col justify-center items-center px-4
+                    style={{ transformStyle: 'preserve-3d' }}
+                    className={`w-32 h-48 flex flex-col justify-center items-center px-4
                 border-solid border-black border-2 rounded-lg bg-white
-                absolute right-1/2 translate-x-1/2 origin-center
-                hover:bg-yellow-300'
+                absolute right-1/2 translate-x-1/2 origin-card-animation opacity-1
+                hover:bg-yellow-300  `}
                 >
 
                     <h4 className='text-lg mb-2'>{NameIcon.name}</h4>
@@ -59,6 +73,7 @@ function getNameIconList(name: string): NameIcon[] {
             { name: 'CSS', Icon: CSSIcon },
             { name: 'React2', Icon: ReactIcon },
             { name: 'React3', Icon: ReactIcon },
+            { name: 'React4', Icon: ReactIcon },
         ]
     } else if (name === 'Backend') {
         return []

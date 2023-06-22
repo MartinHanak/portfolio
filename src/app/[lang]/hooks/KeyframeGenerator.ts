@@ -1,6 +1,5 @@
-import { threadId } from "worker_threads";
 
-export type performantAnimationProperties = "opacity" | "translateY" | "translateX" | "scale" | "rotate" | "translateZ" ;
+export type performantAnimationProperties = "opacity" | "translateY" | "translateX" | "scale" | "rotate" | "translateZ"  | "perspective";
 export type allowed3DProperties = "rotate3D";
 
 export interface propertyValue {
@@ -82,7 +81,7 @@ export default class KeyframeGenerator {
                     }
                 } else {
                     if(keyframe["transform"]) {
-                        keyframe["transform"] += ` ${keyValue.property}(${keyValue.value}${keyValue.units})`
+                        keyframe["transform"] += ` ${keyValue.property}(${keyValue.value}${keyValue.units!== undefined? keyValue.units : '' })`
                     } else {
                         keyframe = {
                             ...keyframe,

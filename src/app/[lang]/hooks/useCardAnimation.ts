@@ -102,7 +102,7 @@ export function useCardAnimation(arrayRef: MutableRefObject<HTMLDivElement[] | n
 
         
 
-        /*
+        
        const rotationGenerator = new RotationKeyframeGenerator(cards.length);
 
        const rotationAnimator = new CardAnimator(cards, rotationGenerator);
@@ -115,13 +115,22 @@ export function useCardAnimation(arrayRef: MutableRefObject<HTMLDivElement[] | n
         const shiftGenerator = new ShiftKeyframeGenerator(cards.length,rotationStationaryTime,rotationAnimationLength)
         const shiftAnimator = new CardAnimator(cards,shiftGenerator)
 
-        rotationAnimator.playAnimation();
-        shiftAnimator.playAnimation()
-        */
+        rotationAnimator.playAnimation({indexDelay: 2000, composite: "replace"});
+        shiftAnimator.playAnimation({indexDelay: 2000, composite: "add"})
+        
+        console.log(rotationGenerator.getKeyframes().keyframes)
+
+      // rotationAnimator.pauseAnimation()
+       shiftAnimator.pauseAnimation()
+
+        //rotationAnimator.resetAnimation()
+
+        /*
        const unstackGenerator = new StackKeyframeGenerator(cards.length);
         const animator = new CardAnimator(cards,unstackGenerator);
         animator.playAnimation(undefined,100);
         console.log(unstackGenerator.getKeyframes().keyframes)
+        */
 
 
         // bind click events
