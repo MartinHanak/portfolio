@@ -120,8 +120,14 @@ export function useCardAnimation(arrayRef: MutableRefObject<HTMLDivElement[] | n
         
         console.log(rotationGenerator.getKeyframes().keyframes)
 
-      // rotationAnimator.pauseAnimation()
-       shiftAnimator.pauseAnimation()
+        rotationAnimator.pauseAnimation()
+        shiftAnimator.pauseAnimation()
+
+        const stackKeyframeGenerator = new StackKeyframeGenerator(cards.length)
+
+        const stackAnimator = new CardAnimator(cards,stackKeyframeGenerator) 
+
+        stackAnimator.playAnimation({currentTimeDelay: {animationId : 'rotation', totalTime : rotationAnimationLength}})
 
         //rotationAnimator.resetAnimation()
 

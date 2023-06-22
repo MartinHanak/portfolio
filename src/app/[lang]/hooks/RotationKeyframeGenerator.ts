@@ -36,7 +36,7 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
 
         const oneRotationAngle = 2 * this.maxDisplayedAngle / this.displayedObjects;
 
-        const perspective = 500;
+        const perspective = 2000;
         const zShift = 10;
 
         // offset for even numbers

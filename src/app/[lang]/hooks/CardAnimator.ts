@@ -2,7 +2,8 @@ import KeyframeGenerator from "./KeyframeGenerator";
 
 interface playAnimationOptions {
     composite?:CompositeOperation,
-    indexDelay?: number
+    indexDelay?: number,
+    currentTimeDelay?: { animationId: string, totalTime: number} // 
 }
 
 export class CardAnimator {
@@ -16,7 +17,7 @@ export class CardAnimator {
 
     playAnimation(playOptions?: playAnimationOptions) {
         const options = this.keyframeGenerator.getKeyframeAnimationOptions();
-        const keyframes = this.keyframeGenerator.getKeyframes().keyframes;
+        
 
         let chosenComposition: CompositeOperation = 'accumulate';
 
@@ -30,6 +31,28 @@ export class CardAnimator {
         }
 
         this.cards.forEach((card, index: number) => {
+            let keyframes = this.keyframeGenerator.getKeyframes().keyframes;
+
+            if(playOptions && playOptions.currentTimeDelay !== undefined) {
+
+                card.getAnimations().forEach((animation: Animation) => {
+                    if(playOptions.currentTimeDelay && animation.id === playOptions.currentTimeDelay.animationId) {
+
+                        
+                        let totalTime = playOptions.currentTimeDelay.totalTime;
+
+                        let currentTime = Number(animation.currentTime) % totalTime;
+                        console.log(`currenttime: ${currentTime}`)
+                        console.log(`total time: ${totalTime}`)
+
+                        console.log(animation)
+                        keyframes = this.keyframeGenerator
+                        .getKeyframes({currentTimeOffset: currentTime,totalTime: totalTime}).keyframes;
+
+                    }
+                })
+            }
+
             const animation = card.animate(keyframes, modifiedOptions)
 
             if(playOptions && playOptions.indexDelay) {
@@ -59,6 +82,8 @@ export class CardAnimator {
 
     pauseAnimation() {
         const animationId = this.keyframeGenerator.getKeyframeAnimationOptions().id;
+
+        const pausePromises: Promise<boolean>[] = [];
 
         this.cards.forEach((card) => {
             card.getAnimations().forEach((animation) => {

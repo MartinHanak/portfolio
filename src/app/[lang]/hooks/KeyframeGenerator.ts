@@ -20,6 +20,11 @@ export interface keyframeValue {
     duration: number // in ms
 }
 
+export interface getKeyframes {
+    currentTimeOffset: number,
+    totalTime: number
+}
+
 export default class KeyframeGenerator {
     timePerItem: number;
     displayedObjects: number;
@@ -42,8 +47,16 @@ export default class KeyframeGenerator {
         return options;
     }
 
-    getKeyframes() {
-        return this.generateKeyframes(this.getFrameValues())
+    getKeyframes(options?: getKeyframes) {
+        if(options && !isNaN(options.currentTimeOffset) && !isNaN(options.totalTime) ) {
+            return this.generateKeyframes(
+                this.getFrameValues(
+                    {currentTimeOffset: options.currentTimeOffset,
+                        totalTime: options.totalTime}
+                    ))
+        } else {
+            return this.generateKeyframes(this.getFrameValues())
+        }
     }
 
     private generateKeyframes(frameValues: keyframeValue[]) {
@@ -112,7 +125,7 @@ export default class KeyframeGenerator {
     }
 
     // default placeholder = pulsing opacity
-    getFrameValues() {
+    getFrameValues(options?: getKeyframes) {
         let frameValues : keyframeValue[] = [];
         frameValues.push({
             keyValuePairs: [{
