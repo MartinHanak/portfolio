@@ -3,10 +3,14 @@ import { prisma } from "../../../db"
 import { redirect } from 'next/navigation';
 import sendMail from "../util/mail";
 import { FormEvent } from "react";
+import { useState } from "react";
+import { BACKEND_URL } from "../config";
 
 
 export function ContactForm() {
 
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
 
     /* server action solution - currently does not work with SSG in Next.js */
     /*
@@ -36,7 +40,25 @@ export function ContactForm() {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        console.log('submitting...');
+        const data = {
+            message: message,
+            email: email
+        }
+
+        const res = fetch(`${BACKEND_URL}/en/api`, {
+            body: JSON.stringify(data),
+            method: "post",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then((response) => {
+            console.log(response)
+            setEmail('')
+            setMessage('')
+        }).catch((err) => {
+            console.log(err)
+        })
+
     }
 
 
@@ -50,10 +72,11 @@ export function ContactForm() {
             <h3 className='font-bold text-4xl mb-4'>Contact Me</h3>
 
             <label className="mb-2" htmlFor="email">Your Email</label>
-            <input className="text-black mb-4 w-3/4 p-2 rounded-sm" type="email" name="email" id="email" required />
+            <input className="text-black mb-4 w-3/4 p-2 rounded-sm" type="email" name="email" id="email" required value={email} onChange={(e) => { setEmail(e.target.value) }} />
 
             <label className="mb-2" htmlFor="message">Message</label>
-            <textarea rows={7} className="text-black mb-4 w-full p-4 rounded-sm" name="message" id="message"></textarea>
+            <textarea rows={7} className="text-black mb-4 w-full p-4 rounded-sm" name="message" id="message"
+                value={message} onChange={(e) => { setMessage(e.target.value) }}></textarea>
 
             <button className="rounded-sm font-bold border-solid border-2 border-white px-4 py-2 w-full hover:bg-white hover:text-black" type="submit" >Send Message</button>
         </form>
