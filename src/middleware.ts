@@ -31,6 +31,7 @@ export function middleware(request: NextRequest) {
        '/test_image.jpg',
        '/next.svg',
        '/react.svg',
+       '/test_video.mp4',
        '/mobile_test_image.jpg',
        // Your other files in `public`
     ].includes(pathname)

@@ -8,7 +8,7 @@ export default function sendMail(email: string, message: string) {
     const newMailMessage = {
         from: email,
         to: 'martinhanak97@gmail.com',
-        subject: 'test',
+        subject: `Portfolio email from ${email}`,
         text: message,
         html: `<p>${message}</p>`,
     }
