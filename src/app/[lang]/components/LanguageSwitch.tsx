@@ -21,17 +21,21 @@ export const LanguageSwitch = async ({ lang }: LanguageSwitch) => {
                     </div>
                 </div>
 
-                <div className="hexagon">
-                    <div className="inner-hexagon">
-                        EN
+                <a href={`/en`}>
+                    <div className="hexagon">
+                        <div className="inner-hexagon">
+                            English
+                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div className="hexagon">
-                    <div className="inner-hexagon">
-                        CZ
+                <a href={`/cs`}>
+                    <div className="hexagon">
+                        <div className="inner-hexagon">
+                            Czech
+                        </div>
                     </div>
-                </div>
+                </a>
 
             </div>
         </div>
