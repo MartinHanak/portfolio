@@ -1,0 +1,10 @@
+{
+  "title": "Ahoj!",
+  "server-component": {
+    "welcome": "Vítejte"
+  },
+  "counter": {
+    "increment": "Přidat",
+    "decrement": "Ubrat"
+  }
+}

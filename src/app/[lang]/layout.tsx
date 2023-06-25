@@ -5,11 +5,11 @@ import { IBM_Plex_Mono } from 'next/font/google';
 
 
 // for now: causes error with server actions experimental feature when submitting a form
-/*
+
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }))
 }
-*/
+
 
 const IBMFont = IBM_Plex_Mono({
   weight: ["400", "700"],

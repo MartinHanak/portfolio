@@ -1,5 +1,16 @@
+import { Trans } from 'react-i18next/TransWithoutContext'
+import { languages } from '@/app/i18n/settings'
+import { useTranslation } from '@/app/i18n'
+import { Locale } from '@/i18n-config'
 
-export function LanguageSwitch() {
+interface LanguageSwitch {
+    lang: Locale
+}
+
+export const LanguageSwitch = async ({ lang }: LanguageSwitch) => {
+
+    const { t } = await useTranslation(lang, 'common ')
+
     return (
         <div className="hexagon-wrapper hexagon-language-switch">
             <div className="hexagon-container pt-4 ">

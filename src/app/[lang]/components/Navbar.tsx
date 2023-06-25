@@ -1,13 +1,18 @@
 import Link from "next/link"
 import { LanguageSwitch } from "./LanguageSwitch"
+import { Locale } from "@/i18n-config"
 const pageIds: string[] = ["Home", "About", "Skills", "Projects", "Contact"]
 const hoverColors: string[] = ["hover:bg-red-500", "hover:bg-yellow-500", "hover:bg-cyan-500", "hover:bg-orange-500", "hover:bg-green-500",]
 
-export function Navbar() {
+interface Navbar {
+    lang: Locale
+}
+
+export const Navbar = async ({ lang }: Navbar) => {
     return (
         <nav>
 
-            <LanguageSwitch />
+            <LanguageSwitch lang={lang} />
 
             <div className="hexagon-wrapper hexagon-navbar" id="about">
                 <div className="hexagon-container">

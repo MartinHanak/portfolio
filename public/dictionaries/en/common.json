@@ -1,0 +1,10 @@
+{
+  "title": "Hi there!",
+  "server-component": {
+    "welcome": "Welcome"
+  },
+  "counter": {
+    "increment": "Increment",
+    "decrement": "Decrement"
+  }
+}
