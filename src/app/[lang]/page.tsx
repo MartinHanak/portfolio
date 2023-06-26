@@ -24,8 +24,6 @@ export default async function Home({ params: { lang } }: Home) {
 
       <Container>
 
-        <h1>{t('title')}</h1>
-
         <Hero />
 
         <About />
@@ -37,7 +35,7 @@ export default async function Home({ params: { lang } }: Home) {
       </Container >
 
 
-      <Footer />
+      <Footer lang={lang} />
     </>
   )
 }

@@ -43,9 +43,11 @@ export function Project({ lang, name, shortDescription, videoURL, children }: Pr
     }, []);
 
     return (
-        <div className=" w-full  my-4  bg-gray-200 p-4">
-            <h3 className="text-4xl font-bold">{name}</h3>
-            <p className='text-lg'>{shortDescription}</p>
+        <div className=" w-full  my-4 mb-16  bg-gray-200 p-4">
+
+            <h3 className="text-4xl font-bold mb-2 mt-4 ml-4">{name}</h3>
+
+            <p className='text-lg mb-8 ml-4'>{shortDescription}</p>
 
             <div className='relative w-full aspect-video z-10 p-2 '>
 

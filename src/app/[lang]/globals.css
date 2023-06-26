@@ -210,6 +210,10 @@
        /* background-color: var(--inner-hover-color); */
     }
 
+    .dash-list {
+        list-style: url("/dash.svg");
+    }
+
 
 }
 

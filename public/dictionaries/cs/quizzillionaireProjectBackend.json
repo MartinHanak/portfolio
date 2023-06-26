@@ -1,0 +1,16 @@
+{
+  "name": "Quizzillionaire Backend",
+
+  "shortDescription": "Backend pro Quizzillionaire hru",
+
+  "longDescription": [
+    "Backend pro hru Quizzillionaire poskytuje REST API pro přihlášení a registraci uživatele a zároveň se stará o interní herní logiku.",
+    "Navazuje spojení mezi aplikací a databází pro trvalé ukládání dat. Kromě toho definuje rozhraní pro interakci s OpenAI ChatGPT API, které umožňuje využívat funkce generování textu pomocí umělé inteligence."
+  ],
+
+  "technologyDescription": [
+    "Hlavní část aplikace je napsána s využitím Express.js, které definuje REST API pro aplikaci.",
+    "Aplikace využívá databázi Postgres pro ukládání dat a k interakci s touto databází je používán Sequelize pro objektově relační mapování (ORM).",
+    "Pro vyřešení asynchronních problémů, kdy uživatel požaduje data, která ještě nebyla vygenerována, byly implementovány události odesílané ze serveru (server-sent events). Tyto události odesílané ze serveru informují uživatele, jakmile je generační proces dokončen."
+  ]
+}

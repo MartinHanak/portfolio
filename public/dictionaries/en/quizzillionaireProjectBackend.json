@@ -1,0 +1,16 @@
+{
+  "name": "Quizzillionaire Backend",
+
+  "shortDescription": "Backend for the Quizzillionaire game",
+
+  "longDescription": [
+    "The backend for the Quizzillionaire game offers a REST API for user login and registration, as well as handles the internal game logic.",
+    "It establishes a connection between the application and a database for persistent storage. Additionally, it defines an interface for interacting with the OpenAI ChatGPT API, which enables AI text generation capabilities."
+  ],
+
+  "technologyDescription": [
+    "The core of the application is written using Express.js, which defines the REST API for the application.",
+    "The application utilizes a Postgres database for data storage, and Sequelize is employed for Object Relational Mapping (ORM) to interact with the database.",
+    "To address asynchronous issues when a user requests data that has not yet been generated, server-sent events were implemented. These server-sent events notify the user once the generation process is complete."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Quizzillionaire",
+
+  "shortDescription": "Who Wants to Be a Millionaire game with AI generated questions",
+
+  "longDescription": [
+    "Quizzillionaire is an online game that allows you to play Who Wants to Be a Millionaire with AI-generated questions.",
+    "Optionally, you can specify a theme, and all the generated questions will revolve around that particular theme.",
+    "It provides the usual three lifelines that can assist you in answering all the questions: \"Ask the Audience,\" \"50:50,\" and \"Phone a Friend.\""
+  ],
+
+  "technologyDescription": [
+    "The frontend is centered around the utilization of the backend REST API. It primarily employs React for the majority of the tasks, along with Tailwind CSS for defining the website styles.",
+    "The application utilizes the Redux and Redux Toolkit libraries to facilitate state management. The state is stored in a centralized store that includes information about login and game state. Asynchronous Thunks provided by Redux are employed to consume the backend API."
+  ]
+}

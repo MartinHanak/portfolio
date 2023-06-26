@@ -3,8 +3,15 @@ import { FormEvent } from "react";
 import { useState } from "react";
 import { BACKEND_URL } from "../../config";
 
+interface ContactForm {
+    heading: string,
+    emailHeading: string,
+    messageHeading: string,
+    send: string
+}
 
-export function ContactForm() {
+
+export function ContactForm({ heading, emailHeading, messageHeading, send }: ContactForm) {
 
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
@@ -66,16 +73,16 @@ export function ContactForm() {
             onSubmit={handleSubmit}
         >
 
-            <h3 className='font-bold text-4xl mb-4'>Contact Me</h3>
+            <h3 className='font-bold text-4xl mb-4'>{heading}</h3>
 
-            <label className="mb-2" htmlFor="email">Your Email</label>
-            <input className="text-black mb-4 w-3/4 p-2 rounded-sm" type="email" name="email" id="email" required value={email} onChange={(e) => { setEmail(e.target.value) }} />
+            <label className="mb-2" htmlFor="email">{emailHeading}</label>
+            <input className="text-black mb-4 w-3/4 px-4 py-2 rounded-sm" type="email" name="email" id="email" required value={email} onChange={(e) => { setEmail(e.target.value) }} />
 
-            <label className="mb-2" htmlFor="message">Message</label>
+            <label className="mb-2" htmlFor="message">{messageHeading}</label>
             <textarea rows={7} className="text-black mb-4 w-full p-4 rounded-sm" name="message" id="message"
                 value={message} onChange={(e) => { setMessage(e.target.value) }}></textarea>
 
-            <button className="rounded-sm font-bold border-solid border-2 border-white px-4 py-2 w-full hover:bg-white hover:text-black" type="submit" >Send Message</button>
+            <button className="rounded-sm font-bold border-solid border-2 border-white px-4 py-2 w-full hover:bg-white hover:text-black" type="submit" >{send}</button>
         </form>
 
     )

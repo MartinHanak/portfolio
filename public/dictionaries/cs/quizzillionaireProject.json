@@ -1,0 +1,16 @@
+{
+  "name": "Quizzillionaire",
+
+  "shortDescription": "Hra Kdo chce být milionářem s otázkami generovanými umělou inteligencí",
+
+  "longDescription": [
+    "Quizzillionaire je online hra, která vám umožňuje hrát Kdo chce být milionářem s otázkami generovanými umělou inteligencí.",
+    "Volitelně můžete specifikovat téma a všechny generované otázky se budou točit kolem tohoto konkrétního tématu.",
+    "Poskytuje běžné tři nápovědy, které vám mohou pomoci při zodpovězení všech otázek: \"Zeptat se publika\", \"50:50\" a \"Zavolat příteli\"."
+  ],
+
+  "technologyDescription": [
+    "Frontend je zaměřen na využití backend REST API. Převážně využívá React pro většinu úkolů a spoléhá se na Tailwind CSS pro definování vzhledu webové stránky.",
+    "Aplikace využívá knihovny Redux a Redux Toolkit pro usnadnění správy stavu. Stav je ukládán v centralizovaném úložišti, které obsahuje informace o přihlášení a stavu hry. Pro komunikaci s backend API jsou využívány asynchronní Thunky poskytované knihovnou Redux."
+  ]
+}
