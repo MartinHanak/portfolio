@@ -24,18 +24,10 @@ export function middleware(request: NextRequest) {
 
   // // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
   // // If you have one
+  // for public files:
+  const noRedirectRegex = /\/([^\.]+)\.(svg|json|ico|jpg|mp4)$/;
    if (
-     [
-       '/manifest.json',
-       '/favicon.ico',
-       '/test_image.jpg',
-       '/next.svg',
-       '/react.svg',
-       '/test_video.mp4',
-       '/gravitorium.mp4',
-       '/mobile_test_image.jpg',
-       // Your other files in `public`
-    ].includes(pathname)
+      noRedirectRegex.test(pathname)
    )
      return
 
