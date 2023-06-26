@@ -1,11 +1,11 @@
 import { Locale } from '../../i18n-config'
-import { Navbar } from "./components/Navbar"
-import { Footer } from "./components/Footer"
-import { Hero } from "./components/Hero"
+import { Navbar } from "./components/Navbar/Navbar"
+import { Footer } from "./components/Footer/Footer"
+import { Hero } from "./components/Hero/Hero"
 import { Container } from "./components/Containter"
-import { About } from "./components/About"
-import { Skills } from "./components/Skills"
-import { Projects } from './components/Projects'
+import { About } from "./components/About/About"
+import { Skills } from "./components/Skills/Skills"
+import { Projects } from './components/Projects/Projects'
 
 import { useTranslation } from "../i18n"
 

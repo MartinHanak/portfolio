@@ -1,10 +1,7 @@
 "use client"
-import { prisma } from "../../../db"
-import { redirect } from 'next/navigation';
-import sendMail from "../util/mail";
 import { FormEvent } from "react";
 import { useState } from "react";
-import { BACKEND_URL } from "../config";
+import { BACKEND_URL } from "../../config";
 
 
 export function ContactForm() {

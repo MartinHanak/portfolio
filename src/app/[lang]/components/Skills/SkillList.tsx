@@ -1,11 +1,10 @@
 "use client"
-import Image from 'next/image'
-import ReactIcon from '../../../../public/react.svg';
-import HtmlIcon from '../../../../public/html.svg';
-import CSSIcon from '../../../../public/css.svg';
+import ReactIcon from '../../../../../public/react.svg';
+import HtmlIcon from '../../../../../public/html.svg';
+import CSSIcon from '../../../../../public/css.svg';
 
 import { useEffect, useState, useRef } from 'react';
-import { useCardAnimation } from '../hooks/useCardAnimation';
+import { useCardAnimation } from '../../hooks/useCardAnimation';
 
 interface SkillList {
     name: string

@@ -6,7 +6,6 @@ import { Metadata } from 'next';
 
 
 // for now: causes error with server actions experimental feature when submitting a form
-
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }))
 }

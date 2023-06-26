@@ -10,7 +10,7 @@ export default function sendMail(email: string, message: string) {
         to: 'martinhanak97@gmail.com',
         subject: `Portfolio email from ${email}`,
         text: message,
-        html: `<p>${message}</p>`,
+        html: `<div>${message}</div>`,
     }
 
     const transporter = nodeMailer.createTransport({

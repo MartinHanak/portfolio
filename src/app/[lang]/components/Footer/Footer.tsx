@@ -1,6 +1,6 @@
 import { ContactForm } from "./ContactForm";
 import { ContactInfo } from "./ContactInfo";
-import { Container } from "./Containter";
+import { Container } from "../Containter";
 
 export function Footer() {
 
