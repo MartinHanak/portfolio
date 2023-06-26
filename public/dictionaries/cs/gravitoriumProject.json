@@ -1,0 +1,15 @@
+{
+  "name": "Gravitorium",
+
+  "shortDescription": "Online simulace dynamiky sluneční soustavy",
+
+  "longDescription": [
+    "Gravitorium je interaktivní simulace pohybu planet naší sluneční soustavy v reálném čase. Simulace umožňuje přesně vypočítat jejich pohyb a zobrazovat trajektorie planet."
+  ],
+
+  "technologyDescription": [
+    "React byla hlavní technologie použitá k vytvoření frontendu tohoto projektu, spolu s CSS moduly.",
+    "Data pro pozice a rychlosti planet byla načtena z veřejně dostupného NASA API.",
+    "3D vizualizace byla převážně dosažena pomocí knihovny React Three Fiber ve spojení s Three.js a Drei. Pod kapotou využívá WebGL a metodu requestAnimationFrame prohlížeče k vytvoření plynulé animace s 60 snímky za sekundu."
+  ]
+}

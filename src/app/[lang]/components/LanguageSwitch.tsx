@@ -2,6 +2,7 @@ import { Trans } from 'react-i18next/TransWithoutContext'
 import { languages } from '@/app/i18n/settings'
 import { useTranslation } from '@/app/i18n'
 import { Locale } from '@/i18n-config'
+import Link from 'next/link'
 
 interface LanguageSwitch {
     lang: Locale
@@ -21,21 +22,21 @@ export const LanguageSwitch = async ({ lang }: LanguageSwitch) => {
                     </div>
                 </div>
 
-                <a href={`/en`}>
+                <Link href={`/en`}>
                     <div className="hexagon">
                         <div className="inner-hexagon">
                             English
                         </div>
                     </div>
-                </a>
+                </Link>
 
-                <a href={`/cs`}>
+                <Link href={`/cs`}>
                     <div className="hexagon">
                         <div className="inner-hexagon">
                             Czech
                         </div>
                     </div>
-                </a>
+                </Link>
 
             </div>
         </div>

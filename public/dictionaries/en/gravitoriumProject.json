@@ -1,0 +1,15 @@
+{
+  "name": "Gravitorium",
+
+  "shortDescription": "Online simulation of the Solar System dynamics",
+
+  "longDescription": [
+    "Gravitorium is a real-time interactive simulation of the planets' motion in our Solar System. It is capable of precisely computing their motion and displaying planet trajectories."
+  ],
+
+  "technologyDescription": [
+    "React was the core library used to create the frontend for this project, along with CSS modules.",
+    "Data for planet positions and velocities were fetched from the publicly available NASA API.",
+    "The 3D visualization was mainly achieved using the React Three Fiber library, in conjunction with Three.js and Drei. Under the hood, it leverages WebGL and the requestAnimationFrame browser method to create a smooth 60 FPS animation."
+  ]
+}
