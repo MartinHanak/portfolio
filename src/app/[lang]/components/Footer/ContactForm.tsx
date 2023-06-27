@@ -4,6 +4,7 @@ import { useState } from "react";
 import { BACKEND_URL } from "../../config";
 
 interface ContactForm {
+    id: string,
     heading: string,
     emailHeading: string,
     messageHeading: string,
@@ -11,7 +12,7 @@ interface ContactForm {
 }
 
 
-export function ContactForm({ heading, emailHeading, messageHeading, send }: ContactForm) {
+export function ContactForm({ id, heading, emailHeading, messageHeading, send }: ContactForm) {
 
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
@@ -69,7 +70,7 @@ export function ContactForm({ heading, emailHeading, messageHeading, send }: Con
     //ERROR: generateStaticParams causes submit not to work
     // https://github.com/vercel/next.js/issues/49408
     return (
-        <form id="Contact" className="text-white flex flex-col justify-center items-start  md:order-2 mb-16"
+        <form id={id} className="text-white flex flex-col justify-center items-start  md:order-2 mb-16"
             onSubmit={handleSubmit}
         >
 

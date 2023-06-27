@@ -1,6 +1,10 @@
-export function About() {
+interface About {
+    id: string
+}
+
+export function About({ id }: About) {
     return (
-        <div id="About">
+        <div id={id}>
             About me here...
         </div>
     )

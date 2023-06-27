@@ -5,10 +5,11 @@ import { ProjectInfo } from './ProjectInfo';
 import { Locale } from '@/i18n-config';
 
 interface Projects {
+    id: string,
     lang: Locale
 }
 
-export async function Projects({ lang }: Projects) {
+export async function Projects({ id, lang }: Projects) {
     const { t } = await useTranslation(lang, 'gravitoriumProject');
 
     const t_quiz = (await useTranslation(lang, 'quizzillionaireProject')).t;
@@ -16,7 +17,7 @@ export async function Projects({ lang }: Projects) {
     const t_portfolio = (await useTranslation(lang, 'portfolioProject')).t;
 
     return (
-        <div id="Projects">
+        <div id={id}>
             <h2 className="text-4xl font-bold">Projects</h2>
             <p>projects description here....</p>
 

@@ -1,8 +1,12 @@
 import { SkillList } from "./SkillList";
 
-export function Skills() {
+interface Skills {
+    id: string
+}
+
+export function Skills({ id }: Skills) {
     return (
-        <div id="Skills" className="flex flex-col justify-center items-stretch my-8">
+        <div id={id} className="flex flex-col justify-center items-stretch my-8">
 
             <h2 className="text-4xl font-bold">My Skills</h2>
             <p>short description....</p>

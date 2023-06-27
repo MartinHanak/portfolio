@@ -1,44 +1,77 @@
-import { Trans } from 'react-i18next/TransWithoutContext'
-import { languages } from '@/app/i18n/settings'
-import { useTranslation } from '@/app/i18n'
-import { Locale } from '@/i18n-config'
+"use client"
 import Link from 'next/link'
+import { LanguageSwitchLabels } from './Navbar'
+import { useState, useRef, useEffect } from 'react';
 
-interface LanguageSwitch {
-    lang: Locale
-}
+import CzechFlag from '../../../../../public/Czech_flag.svg'
+import EnglishFlag from '../../../../../public/UK_flag.svg'
 
-export const LanguageSwitch = async ({ lang }: LanguageSwitch) => {
 
-    const { t } = await useTranslation(lang, 'common ')
+export function LanguageSwitch({ language, czech, english }: LanguageSwitchLabels) {
+
+    const [display, setDisplay] = useState(false);
+
+    const wrapperRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+
+        function handleClickOutside(event: Event) {
+            if (wrapperRef.current
+                && event.target instanceof HTMLElement
+                && !wrapperRef.current.contains(event.target)) {
+                setDisplay(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+
+    }, [wrapperRef])
+
+
 
     return (
-        <div className="hexagon-wrapper hexagon-language-switch">
-            <div className="hexagon-container pt-4 ">
+        <div ref={wrapperRef}
+            className="hexagon-language-switch mt-4
+            border-solid border-black border-2
+        flex flex-col md:flex-row flex-wrap  gap-1 md:gap-0
+        -mr-16 md:mr-0
+        "
+            onMouseLeave={() => setDisplay(false)}>
 
-                <div className="hexagon ">
-                    <div className="inner-hexagon">
-                        Language
+
+            <div className="hexagon hover:transform-none select-none cursor-pointer"
+                onMouseEnter={() => setDisplay(true)}
+                onClick={() => setDisplay(true)}
+
+            >
+                <div className="inner-hexagon flex-col gap-1">
+                    <span className='block pt-2'>{language}</span>
+                    <div className='h-auto w-6 border-solid border-black border-[1px]'>{language === "Language" ? <EnglishFlag /> : <CzechFlag />}</div>
+                </div>
+            </div>
+
+
+            <Link href={`/en`} className={`${display ? 'opacity-1' : 'opacity-0 '}  transition-all duration-1000`}>
+                <div className={`hexagon 
+                    transition-all duration-1000 transform ${display ? ' scale-1' : 'scale-0 '}
+                    hover:scale-110 hover:duration-500 hover:delay-0`}>
+                    <div className="inner-hexagon englishBg">
+                        <span className='block text-center w-full py-2 bg-black bg-opacity-70 text-white font-bold '>{english}</span>
                     </div>
                 </div>
+            </Link>
 
-                <Link href={`/en`}>
-                    <div className="hexagon">
-                        <div className="inner-hexagon">
-                            English
-                        </div>
+            <Link href={`/cs`} className={`${display ? 'opacity-1' : 'opacity-0 '}  
+                transition-all duration-1000 delay-100 `}>
+                <div className={`hexagon 
+                    transition-all duration-1000 delay-100 transform ${display ? ' scale-1' : 'scale-0 '} hover:scale-110 hover:duration-500 hover:delay-0`}>
+                    <div className="inner-hexagon czechBg">
+                        <span className='block text-center w-full py-2 bg-black bg-opacity-70 text-white font-bold '>{czech}</span>
                     </div>
-                </Link>
+                </div>
+            </Link>
 
-                <Link href={`/cs`}>
-                    <div className="hexagon">
-                        <div className="inner-hexagon">
-                            Czech
-                        </div>
-                    </div>
-                </Link>
-
-            </div>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import { Locale } from '../../i18n-config'
-import { Navbar } from "./components/Navbar/Navbar"
+import { LanguageSwitchLabels, Navbar, NavbarLinks } from "./components/Navbar/Navbar"
 import { Footer } from "./components/Footer/Footer"
 import { Hero } from "./components/Hero/Hero"
 import { Container } from "./components/Containter"
@@ -17,25 +17,41 @@ export default async function Home({ params: { lang } }: Home) {
 
   const { t } = await useTranslation(lang, 'common')
 
+  const t_navbar = (await useTranslation(lang, 'navbar')).t
+
+  const languageSwitchLabels: LanguageSwitchLabels = {
+    language: t_navbar('language'),
+    czech: t_navbar('Czech'),
+    english: t_navbar('English')
+  }
+
+  const navbarLinks: NavbarLinks = {
+    home: t_navbar('home'),
+    about: t_navbar('about'),
+    projects: t_navbar('projects'),
+    skills: t_navbar('skills'),
+    contact: t_navbar('contact'),
+  }
+
   return (
     <>
-      <Navbar lang={lang} />
+      <Navbar languageSwitch={languageSwitchLabels} navbar={navbarLinks} />
 
 
       <Container>
 
-        <Hero />
+        <Hero id={navbarLinks.home} />
 
-        <About />
+        <About id={navbarLinks.about} />
 
-        <Skills />
+        {null && <Skills id={navbarLinks.skills} />}
 
-        <Projects lang={lang} />
+        <Projects id={navbarLinks.projects} lang={lang} />
 
       </Container >
 
 
-      <Footer lang={lang} />
+      <Footer id={navbarLinks.contact} lang={lang} />
     </>
   )
 }
