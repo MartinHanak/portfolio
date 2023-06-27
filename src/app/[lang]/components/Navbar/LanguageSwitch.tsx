@@ -32,17 +32,16 @@ export function LanguageSwitch({ language, czech, english }: LanguageSwitchLabel
 
     return (
         <div ref={wrapperRef}
-            className="hexagon-language-switch mt-4
-            border-solid border-black border-2
+            className="hexagon-language-switch md:mt-4
         flex flex-col md:flex-row flex-wrap  gap-1 md:gap-0
-        -mr-16 md:mr-0
+        -mr-32 md:mr-0
         "
             onMouseLeave={() => setDisplay(false)}>
 
 
             <div className="hexagon hover:transform-none select-none cursor-pointer"
                 onMouseEnter={() => setDisplay(true)}
-                onClick={() => setDisplay(true)}
+                onClick={() => setDisplay((prev: boolean) => !prev)}
 
             >
                 <div className="inner-hexagon flex-col gap-1">
@@ -52,7 +51,7 @@ export function LanguageSwitch({ language, czech, english }: LanguageSwitchLabel
             </div>
 
 
-            <Link href={`/en`} className={`${display ? 'opacity-1' : 'opacity-0 '}  transition-all duration-1000`}>
+            <Link href={`/en`} className={`${display ? 'opacity-1' : 'opacity-0 pointer-events-none'}  transition-all duration-1000`}>
                 <div className={`hexagon 
                     transition-all duration-1000 transform ${display ? ' scale-1' : 'scale-0 '}
                     hover:scale-110 hover:duration-500 hover:delay-0`}>
@@ -62,7 +61,7 @@ export function LanguageSwitch({ language, czech, english }: LanguageSwitchLabel
                 </div>
             </Link>
 
-            <Link href={`/cs`} className={`${display ? 'opacity-1' : 'opacity-0 '}  
+            <Link href={`/cs`} className={`${display ? 'opacity-1' : 'opacity-0 pointer-events-none'}  
                 transition-all duration-1000 delay-100 `}>
                 <div className={`hexagon 
                     transition-all duration-1000 delay-100 transform ${display ? ' scale-1' : 'scale-0 '} hover:scale-110 hover:duration-500 hover:delay-0`}>

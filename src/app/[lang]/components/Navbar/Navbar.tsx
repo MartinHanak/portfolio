@@ -27,10 +27,14 @@ export interface Navbar {
 export function Navbar({ languageSwitch, navbar }: Navbar) {
 
     const pageIds: (keyof typeof navbar)[] = ["home", "about", "skills", "projects", "contact"];
-    const hoverColors: string[] = ["hover:bg-red-500", "hover:bg-yellow-500", "hover:bg-cyan-500", "hover:bg-orange-500", "hover:bg-green-500",]
+    const hoverColors: string[] = ["hover:bg-red-500", "hover:bg-orange-400", "hover:bg-yellow-400", "hover:bg-emerald-500", "hover:bg-cyan-500",]
+    const delayClass: string[] = ["delay-[100ms]", "delay-[200ms]", "delay-[300ms]", "delay-[400ms]", "delay-[500ms]"]
 
-    const [display, setDisplay] = useState(false);
+    const [display, setDisplay] = useState(true);
     const previousScroll = useRef(0);
+
+    const [showMobileMenu, setShowMobileMenu] = useState(false);
+    const mobileMenu = useRef<HTMLDivElement | null>(null);
 
 
     useEffect(() => {
@@ -41,24 +45,40 @@ export function Navbar({ languageSwitch, navbar }: Navbar) {
             if (currentScrollY <= previousScroll.current) {
                 setDisplay(true);
             } else if (display) {
-                setDisplay(false)
+                setDisplay(false);
+                setShowMobileMenu(false);
             }
 
             previousScroll.current = currentScrollY;
 
         }
 
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        document.addEventListener("scroll", handleScroll);
+        return () => document.removeEventListener("scroll", handleScroll);
 
     }, [display])
 
+    useEffect(() => {
+
+        function handleClickOutside(event: Event) {
+            if (mobileMenu.current
+                && event.target instanceof HTMLElement
+                && !mobileMenu.current.contains(event.target)) {
+                setShowMobileMenu(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+
+    }, [mobileMenu])
+
 
     return (
-        <nav className={`sticky  ${display ? 'top-0' : '-top-[100%]'}  transition-all duration-1000 will-change-scroll z-[100]`}>
+        <nav className={`fixed md:sticky w-full  ${display ? 'top-0' : '-top-[100%]'}  transition-all duration-1000 will-change-scroll z-[100]`}>
 
             <BigContainer>
-                <div className=" flex flex-row justify-between items-start">
+                <div className="w-full flex flex-row justify-between items-start">
                     <LanguageSwitch
                         language={languageSwitch.language}
                         czech={languageSwitch.czech}
@@ -66,14 +86,18 @@ export function Navbar({ languageSwitch, navbar }: Navbar) {
                     />
 
 
-                    <div className="hexagon-navbar mt-4
-                    border-solid border-black border-2
-                    flex flex-col  md:flex-row flex-wrap 
+                    <div
+                        ref={mobileMenu}
+                        className="hexagon-navbar md:mt-4
+                    flex flex-col  xmd:flex-row flex-wrap 
                      " >
 
-                        <div className="hexagon md:hidden">
+                        <div
+                            className="hexagon menuIcon cursor-pointer"
+                            onClick={() => setShowMobileMenu((prev: boolean) => !prev)}
+                        >
                             <a>
-                                <div className="inner-hexagon font-bold text-lg">
+                                <div className="inner-hexagon font-bold text-lg select-none">
                                     Menu
                                 </div>
                             </a>
@@ -82,7 +106,13 @@ export function Navbar({ languageSwitch, navbar }: Navbar) {
 
                         {pageIds.map((elementID: keyof typeof navbar, index: number) => {
                             return (
-                                <div key={elementID} className="hexagon hover:scale-110 duration-500">
+                                <div key={elementID}
+                                    onClick={() => setShowMobileMenu(false)}
+                                    className={`hexagon hover:scale-110 duration-500 ${delayClass[index]}
+                                 xmd:opacity-100 xmd:pointer-events-auto xmd:delay-0 xmd:scale-100
+                                ${showMobileMenu ? 'opacity-100 pointer-events-auto scale-100'
+                                            : 'opacity-0 pointer-events-none scale-0'}
+                                `}>
                                     <a href={`#${navbar[elementID]}`}>
                                         <div className={`inner-hexagon font-bold text-lg ${hoverColors[index]}`}>
                                             {navbar[elementID]}

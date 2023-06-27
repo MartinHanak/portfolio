@@ -28,13 +28,13 @@ export async function ProjectInfo({ lang, name, shortDescription, longDescriptio
         <div className="grid grid-cols-1 grid-rows-content md:grid-cols-2 md:grid-rows-1 mt-8 mb-8">
 
             <div className="p-4 pr-8  border-solid border-black border-b-2 md:border-b-0">
-                <h4 className="text-4xl font-bold mb-4">{name}</h4>
+                <h4 className="text-2xl md:text-4xl font-bold mb-4">{name}</h4>
 
                 {Array.isArray(longDescription) ? longDescription.map(
                     (paragraphText: string, index: number) => { return (<p key={index} className="mb-4">{paragraphText}</p>) }
                 ) : <p>longDescription</p>}
 
-                <div className="flex flex-row gap-2 mt-8 mb-16">
+                <div className="flex flex-row flex-wrap gap-2 mt-8 mb-16">
 
                     <ButtonLink href={websiteURL} buttonText={t('websiteLink')} />
 
@@ -46,7 +46,7 @@ export async function ProjectInfo({ lang, name, shortDescription, longDescriptio
             <div className="p-4 pl-4 pt-0 mt-4
             even:md:border-solid  even:md:border-black  even:md:border-l-2  ">
 
-                <h5 className="text-2xl font-bold mb-4 mt-2">{t('usedTechnologiesTitle')}</h5>
+                <h5 className="text-lg md:text-2xl font-bold mb-4 mt-2">{t('usedTechnologiesTitle')}</h5>
 
 
                 <ul className="mb-4 pl-8">
@@ -67,7 +67,7 @@ export async function ProjectInfo({ lang, name, shortDescription, longDescriptio
 
 
                 {otherTechList && <>
-                    <h5 className="text-2xl font-bold mb-4 mt-8">{t('otherTechnologiesTitle')}</h5>
+                    <h5 className="text-lg md:text-2xl font-bold mb-4 mt-8">{t('otherTechnologiesTitle')}</h5>
                     <ul className="flex flex-row flex-wrap gap-2">
                         {otherTechList.map((tech: string) => {
                             return (<li key={tech} className="block list-none bg-gray-950 text-white rounded-md text-sm px-2 py-1">

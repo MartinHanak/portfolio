@@ -77,7 +77,7 @@ export function ContactForm({ id, heading, emailHeading, messageHeading, send }:
             <h3 className='font-bold text-4xl mb-4'>{heading}</h3>
 
             <label className="mb-2" htmlFor="email">{emailHeading}</label>
-            <input className="text-black mb-4 w-3/4 px-4 py-2 rounded-sm" type="email" name="email" id="email" required value={email} onChange={(e) => { setEmail(e.target.value) }} />
+            <input className="text-black mb-4 w-full md:w-3/4 px-4 py-2 rounded-sm" type="email" name="email" id="email" required value={email} onChange={(e) => { setEmail(e.target.value) }} />
 
             <label className="mb-2" htmlFor="message">{messageHeading}</label>
             <textarea rows={7} className="text-black mb-4 w-full p-4 rounded-sm" name="message" id="message"
