@@ -1,0 +1,15 @@
+{
+  "name": "Portfolio",
+
+  "shortDescription": "A website where I showcase some of my creations",
+
+  "longDescription": [
+    "This website serves as a platform for displaying my creations and skills. Its primary objective is to provide people with an effortless means of finding and contacting me. Consequently, one of the main focuses during the website's creation was on optimizing it for search engines (SEO) to enhance its discoverability."
+  ],
+
+  "technologyDescription": [
+    "The main technology used to develop this website was Next.js. It was chosen for its capability to merge server-side and client-side rendering, while enabling the website to retain the interactivity of a React application.",
+    "Server components are rendered on the server and sent as HTML to the client. In contrast, client-side components are pre-rendered and then sent to the client for hydration, allowing for enhanced interactivity.",
+    "Next.js offers features such as handling redirects, code splitting, generating XML sitemaps, and server-side rendering, which collectively make it an excellent tool for Search Engine Optimization (SEO). These features help optimize the website's performance and structure, making it more search engine-friendly and enhancing its visibility and ranking in search results."
+  ]
+}

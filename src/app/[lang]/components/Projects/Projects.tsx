@@ -13,6 +13,7 @@ export async function Projects({ lang }: Projects) {
 
     const t_quiz = (await useTranslation(lang, 'quizzillionaireProject')).t;
     const t_quiz_backend = (await useTranslation(lang, 'quizzillionaireProjectBackend')).t;
+    const t_portfolio = (await useTranslation(lang, 'portfolioProject')).t;
 
     return (
         <div id="Projects">
@@ -69,6 +70,25 @@ export async function Projects({ lang }: Projects) {
                     otherTechList={['JWT', 'bcrypt', 'Jest', 'SQL', 'Postgres', 'OpenAI', 'ChatGPT']}
                     websiteURL={'https://www.quizzillionaire.com/'}
                     githubURL={'https://github.com/MartinHanak/pixel_backend'}
+                />
+            </Project>
+
+            <Project
+                lang={lang}
+                name="Portfolio"
+                shortDescription={t_portfolio('shortDescription')}
+                videoURL='/portfolio.mp4'
+            >
+                <ProjectInfo
+                    lang={lang}
+                    name={"Portfolio"}
+                    shortDescription={t_portfolio('shortDescription')}
+                    longDescription={t_portfolio('longDescription', { returnObjects: true })}
+                    technologyDescription={t_portfolio('technologyDescription', { returnObjects: true })}
+                    mainTechList={['Next.js', 'Tailwind CSS', 'Web Animations API']}
+                    otherTechList={['i18next', 'prisma', 'MySQL', 'Server Components', 'Client Components', 'SEO']}
+                    websiteURL={'https://www.martinhanak.com/'}
+                    githubURL={'https://github.com/MartinHanak/portfolio'}
                 />
             </Project>
 

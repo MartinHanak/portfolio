@@ -1,0 +1,15 @@
+{
+  "name": "Portfolio",
+
+  "shortDescription": "Webová stránka, kde prezentuji některé ze svých výtvorů",
+
+  "longDescription": [
+    "Tato webová stránka slouží jako platforma pro zobrazení mých výtvorů a dovedností. Jejím hlavním cílem je poskytnout lidem snadný způsob, jak mě najít a kontaktovat. Proto byl během jejího vytváření kladen důraz na optimalizaci pro vyhledávače (SEO) za účelem zvýšení její objevitelnosti."
+  ],
+
+  "technologyDescription": [
+    "Hlavní technologií použitou při vývoji této webové stránky bylo Next.js. Bylo vybráno kvůli jeho schopnosti spojit serverové a klientové vykreslování a zároveň umožnit webové stránce zachovat interaktivitu React aplikace.",
+    "Serverové komponenty jsou vykresleny na serveru a odeslány jako HTML na klienta. Naopak, klientové komponenty jsou předvykresleny a poté odeslány klientovi pro hydrataci, což umožňuje zlepšenou interaktivitu.",
+    "Next.js nabízí funkce jako zpracování přesměrování, dělení kódu, generování XML sitemap a serverové vykreslování, které z něj dohromady dělají vynikající nástroj pro optimalizaci pro vyhledávače (SEO). Tyto funkce pomáhají optimalizovat výkon a strukturu webové stránky, čímž ji činí přívětivější pro vyhledávače a zlepšují její viditelnost a umístění ve výsledcích vyhledávání."
+  ]
+}
