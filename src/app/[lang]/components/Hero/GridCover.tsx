@@ -1,11 +1,14 @@
 "use client"
-import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
-
-import backgroundImage from '../../../../public/test_image.jpg';
+import React, { useState, useRef, useEffect } from "react";
 
 
 
-export function GridCover() {
+interface GridCover {
+    resetParentAnimation: () => void
+}
+
+
+export function GridCover({ resetParentAnimation }: GridCover) {
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
 
@@ -31,7 +34,7 @@ export function GridCover() {
             }
 
             // row length = 1.5 * sideLength * numberOfHexagonsInRow
-            const hexagonSide = (grid.current.offsetWidth - (rowLength - 1) * gapSize) * (2 / (3 * rowLength));
+            const hexagonSide = (grid.current.offsetWidth - (rowLength - 1) * gapSize) / (1.5 * (rowLength - 1) + 2);
 
             // set new hexagonSide css var
             setCssVarValue('hexagon-side-length', `${hexagonSide}px`)
@@ -40,12 +43,16 @@ export function GridCover() {
             const hexagonHeight = 2 * 0.866 * hexagonSide;
             const hexagonWidth = 2 * hexagonSide;
 
-            const rowNumber = Math.ceil(grid.current.offsetHeight / (hexagonHeight + gapSize));
+            const rowNumber = Math.floor(grid.current.offsetHeight / (hexagonHeight + gapSize));
+            console.log(`rowNumber: ${rowNumber}`)
+            console.log(`grid height: ${grid.current.offsetHeight}`)
+
+
 
             // wave travel speed in px/s
             const waveSpeed = 100;
             // wave start
-            const center = [grid.current.offsetWidth / 3, grid.current.offsetHeight / 3]
+            const center = [grid.current.offsetWidth / 3, grid.current.offsetHeight / 2]
 
             const hexagonArray = [];
 
@@ -99,7 +106,8 @@ export function GridCover() {
             }
 
             setHexagonChildren(hexagonArray);
-
+            // synchronize animation with parent
+            resetParentAnimation();
         }
     }
 

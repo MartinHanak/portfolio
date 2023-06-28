@@ -8,6 +8,8 @@ import { Skills } from "./components/Skills/Skills"
 import { Projects } from './components/Projects/Projects'
 
 import { useTranslation } from "../i18n"
+import { BigContainer } from './components/BigContainer'
+import { Background } from './components/Background'
 
 interface Home {
   params: { lang: Locale }
@@ -18,6 +20,7 @@ export default async function Home({ params: { lang } }: Home) {
   const { t } = await useTranslation(lang, 'common')
 
   const t_navbar = (await useTranslation(lang, 'navbar')).t
+  const t_footer = (await useTranslation(lang, 'footer')).t
 
   const languageSwitchLabels: LanguageSwitchLabels = {
     language: t_navbar('language'),
@@ -35,16 +38,20 @@ export default async function Home({ params: { lang } }: Home) {
 
   return (
     <>
-      <Navbar languageSwitch={languageSwitchLabels} navbar={navbarLinks} />
+      <Background>
 
+        <Navbar languageSwitch={languageSwitchLabels} navbar={navbarLinks} />
+
+        <BigContainer>
+          <Hero id={navbarLinks.home} subheading={t_footer('belowName')} />
+        </BigContainer>
+
+      </Background>
 
       <Container>
-
-        <Hero id={navbarLinks.home} />
-
         <About id={navbarLinks.about} />
 
-        {null && <Skills id={navbarLinks.skills} />}
+        <Skills id={navbarLinks.skills} />
 
         <Projects id={navbarLinks.projects} lang={lang} />
 

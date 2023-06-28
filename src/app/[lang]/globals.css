@@ -4,21 +4,21 @@
 
 /* css variable controlling number of hexagons in one row */
 :root {
-    --hexagons-in-row: 9;
+    --hexagons-in-row: 7;
 
     --gap-size: 4px;
 
-    --hexagon-side-length: 50px;
+    --hexagon-side-length: 100px;
     --hexagon-container-width: calc(var(--hexagon-side-length)*2);
     --hexagon-container-height: calc(var(--hexagon-side-length) * 2 * 0.866);
     --hexagon-border-color: black;
 
-    --background-hexagon-image: url('/mobile_test_image.jpg');
+    --background-hexagon-image: url('/test_image_mobile.jpg');
 }
 
 @media (min-width: 768px) { 
     :root {
-        --hexagons-in-row: 14;
+        --hexagons-in-row: 15;
         --background-hexagon-image: url('/test_image.jpg');
     }
 }

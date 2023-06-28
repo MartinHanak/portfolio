@@ -76,7 +76,7 @@ export function Navbar({ languageSwitch, navbar }: Navbar) {
 
 
     return (
-        <nav className={`fixed md:sticky w-full  ${display ? 'top-0' : '-top-[100%]'}  transition-all duration-1000 will-change-scroll z-[100]`}>
+        <nav className={`fixed   w-full  ${display ? 'top-0' : '-top-[100%]'}  transition-all duration-1000 will-change-scroll z-[100] pointer-events-none`}>
 
             <BigContainer>
                 <div className="w-full flex flex-row justify-between items-start">
@@ -89,7 +89,7 @@ export function Navbar({ languageSwitch, navbar }: Navbar) {
 
                     <div
                         ref={mobileMenu}
-                        className="hexagon-navbar md:mt-4
+                        className="hexagon-navbar md:mt-4 pointer-events-auto
                     flex flex-col  xmd:flex-row flex-wrap 
                      " >
 

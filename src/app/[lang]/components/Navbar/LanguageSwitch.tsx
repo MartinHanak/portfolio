@@ -35,6 +35,7 @@ export function LanguageSwitch({ language, czech, english }: LanguageSwitchLabel
             className="hexagon-language-switch md:mt-4
         flex flex-col md:flex-row flex-wrap  gap-1 md:gap-0
         -mr-32 md:mr-0
+        pointer-events-auto
         "
             onMouseLeave={() => setDisplay(false)}>
 
