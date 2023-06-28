@@ -10,30 +10,31 @@ interface Projects {
 }
 
 export async function Projects({ id, lang }: Projects) {
-    const { t } = await useTranslation(lang, 'gravitoriumProject');
+    const { t } = await useTranslation(lang, 'projects');
 
+    const t_grav = (await useTranslation(lang, 'gravitoriumProject')).t;
     const t_quiz = (await useTranslation(lang, 'quizzillionaireProject')).t;
     const t_quiz_backend = (await useTranslation(lang, 'quizzillionaireProjectBackend')).t;
     const t_portfolio = (await useTranslation(lang, 'portfolioProject')).t;
 
     return (
-        <div id={id}>
-            <h2 className="text-4xl font-bold">Projects</h2>
-            <p>projects description here....</p>
+        <div id={id} className='mt-32'>
+            <h2 className="text-4xl font-bold mb-2 mx-4 lg:mx-0">{t('heading')}</h2>
+            <p className="mb-8 mx-4 lg:mx-0">{t('subheading')}</p>
 
 
             <Project
                 lang={lang}
                 name="Gravitorium"
-                shortDescription={t('shortDescription')}
+                shortDescription={t_grav('shortDescription')}
                 videoURL='/gravitorium.mp4'
             >
                 <ProjectInfo
                     lang={lang}
                     name={"Gravitorium"}
-                    shortDescription={t('shortDescription')}
-                    longDescription={t('longDescription', { returnObjects: true })}
-                    technologyDescription={t('technologyDescription', { returnObjects: true })}
+                    shortDescription={t_grav('shortDescription')}
+                    longDescription={t_grav('longDescription', { returnObjects: true })}
+                    technologyDescription={t_grav('technologyDescription', { returnObjects: true })}
                     mainTechList={['React', 'React Three Fiber', 'Three.js']}
                     otherTechList={['SCSS modules', 'NASA API', 'i18next']}
                     websiteURL={'https://www.gravitorium.com/'}

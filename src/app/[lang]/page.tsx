@@ -49,9 +49,9 @@ export default async function Home({ params: { lang } }: Home) {
       </Background>
 
       <Container>
-        <About id={navbarLinks.about} />
+        <About id={navbarLinks.about} lang={lang} />
 
-        <Skills id={navbarLinks.skills} />
+        <Skills id={navbarLinks.skills} lang={lang} />
 
         <Projects id={navbarLinks.projects} lang={lang} />
 

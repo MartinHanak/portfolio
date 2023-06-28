@@ -1,0 +1,6 @@
+{
+  "heading": "My Skills",
+  "frontend": "One of my most developed skills is JavaScript and all of its related technologies, such as TypeScript. I have used many popular frameworks to build the frontend of my applications, and I'm no stranger to libraries like React, Redux, or Next.js. Combined with my knowledge of HTML and CSS, I'm able to create interactive and user-friendly interfaces.",
+  "backend": "For the backend, my preferred choice is usually Node.js or Express.js. I am familiar with creating REST APIs and connecting applications to databases using technologies like Sequelize, PostgreSQL, MySQL, or Prisma.",
+  "tools": "During my studies, I became acquainted with many useful tools that I now use on a daily basis. I utilize Git and GitHub for version control of my applications, Jest for testing, and VSCode as my go-to code editor. I serve my applications using Linux virtual machines and services like DigitalOcean. I have also set up Nginx as a reverse proxy on my machines and use the PM2 process manager."
+}

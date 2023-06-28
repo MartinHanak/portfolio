@@ -1,0 +1,14 @@
+{
+  "aboveName": "Zdravím!",
+  "beforeName": "Já jsem",
+  "name": "Martin Hanák",
+  "belowName": "Vítejte na mé portfolio webové stránce.",
+  "belowBelowName": "Pokud hledáte oddaného a inovativního vývojáře schopného přivést vaše nápady k úspěchu, jste na správném místě.",
+
+  "title": "O mně",
+  "about": [
+    "Studoval jsem fyziku na Univerzitě Karlově v Praze s interdisciplinární specializací v oblasti počítačového modelování pro molekulární dynamiku. Pro svou diplomovou práci jsem se zaměřil na téma Počítačové modelování inhibice proteázy SARS-CoV-2.",
+
+    "Poháněn svým nadšením jsem následně vstoupil do oblasti webového vývoje. S pečlivým okem pro detail a odhodláním držet krok s nejnovějšími trendy neustále rozšiřuji své dovednosti, abych byl schopen poskytovat špičková moderní řešení."
+  ]
+}

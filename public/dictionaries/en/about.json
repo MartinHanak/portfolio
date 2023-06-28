@@ -1,0 +1,13 @@
+{
+  "aboveName": "Greetings!",
+  "beforeName": "I'm",
+  "name": "Martin Hanák",
+  "belowName": "Welcome to my portfolio website.",
+  "belowBelowName": "If you seek a devoted and innovative developer capable of bringing your ideas to fruition, you've arrived at the right place.",
+  "title": "About Me",
+  "about": [
+    "I pursued my studies in physics at Charles University in Prague, specializing in the interdisciplinary field of computer modeling for molecular dynamics. For my master's thesis, I focused on the topic of Computer Modeling of SARS-CoV-2 Protease Inhibition.",
+
+    "Driven by my passion, I subsequently ventured into the realm of web development. With a keen eye for detail and a commitment to staying up-to-date with the latest industry trends, I am constantly expanding my skill set to provide cutting-edge solutions."
+  ]
+}
