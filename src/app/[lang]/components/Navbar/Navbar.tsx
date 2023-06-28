@@ -1,6 +1,7 @@
 'use client'
 
 import { BigContainer } from "../BigContainer"
+import { Hamburger } from "./Hambuger"
 import { LanguageSwitch } from "./LanguageSwitch"
 import { useState, useEffect, useRef, useCallback } from "react"
 
@@ -98,7 +99,7 @@ export function Navbar({ languageSwitch, navbar }: Navbar) {
                         >
                             <a>
                                 <div className="inner-hexagon font-bold text-lg select-none">
-                                    Menu
+                                    <Hamburger closed={showMobileMenu} />
                                 </div>
                             </a>
                         </div>
