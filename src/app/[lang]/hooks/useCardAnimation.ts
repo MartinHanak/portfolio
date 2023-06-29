@@ -102,14 +102,19 @@ export function useCardAnimation(arrayRef: MutableRefObject<HTMLDivElement[] | n
         shiftAnimator.playAnimation({indexDelay: 2000, composite: "add"})
         
 
-        //rotationAnimator.pauseAnimation()
-        //shiftAnimator.pauseAnimation()
+        
 
         const stackKeyframeGenerator = new StackKeyframeGenerator(cards.length)
 
         const stackAnimator = new CardAnimator(cards,stackKeyframeGenerator) 
 
-        //stackAnimator.playAnimation({currentTimeDelay: {animationId : 'rotation', totalTime : rotationAnimationLength}})
+        setTimeout(() => {
+            rotationAnimator.pauseAnimation()
+            shiftAnimator.pauseAnimation()
+            stackAnimator.playAnimation({currentTimeDelay: {animationId : 'rotation', totalTime : rotationAnimationLength}})
+        }, 2500)
+        
+        
 
         //rotationAnimator.resetAnimation()
 
