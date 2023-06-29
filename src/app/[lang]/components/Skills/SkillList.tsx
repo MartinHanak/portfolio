@@ -45,10 +45,10 @@ export function SkillList({ name }: SkillList) {
 
                 <div key={NameIcon.name}
                     ref={element => cardElementArrayRef.current[index] = element}
-                    style={{ transformStyle: 'preserve-3d' }}
-                    className={`w-32 h-48 flex flex-col justify-center items-center px-4
+                    style={{ transformStyle: 'preserve-3d', right: 'calc(50% - 4rem)' }}
+                    className={`absolute w-32 h-48 flex flex-col justify-center items-center px-4
                 border-solid border-black border-2 rounded-lg bg-white
-                absolute right-1/2 translate-x-1/2 origin-card-animation opacity-1
+                origin-card-animation opacity-1
                 hover:bg-yellow-300  `}
                 >
 

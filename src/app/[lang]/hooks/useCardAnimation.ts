@@ -1,4 +1,3 @@
-
 import { MutableRefObject, useEffect } from "react";
 import RotationKeyframeGenerator from "./RotationKeyframeGenerator";
 import ShiftKeyframeGenerator from "./ShiftKeyframeGenerator";
@@ -9,24 +8,7 @@ import StackKeyframeGenerator from "./StackKeyframeGenerator";
 
 export function useCardAnimation(arrayRef: MutableRefObject<HTMLDivElement[] | null[]>, numberOfElements:number) {
 
-    // duration = timePerItem * numberOfItems
-    const timePerItem = 2000; // in seconds
-
-    const displayedObjects = 5; // should be odd number
-    const maxDisplayedAngle = 60;
-
-    // time in one displayed angle = total time / number of displayed (without transition time)
-    const totalTime = timePerItem * numberOfElements;
-    const displayedTime = Math.min(timePerItem * displayedObjects, totalTime);
-    const hiddenTime = totalTime - displayedTime;
-
-    const timeForOneAngleWithTransition = displayedTime / displayedObjects;
-
-    const transitionFraction = 0.2;
-    const transitionTime = transitionFraction * timeForOneAngleWithTransition; 
-    const stationaryTime = (1 - transitionFraction) *  timeForOneAngleWithTransition;
-
-
+    /*
     const handleClick = (element: HTMLDivElement | null, index:number) => {
         return function ( e: MouseEvent ) {
 
@@ -84,6 +66,7 @@ export function useCardAnimation(arrayRef: MutableRefObject<HTMLDivElement[] | n
             
         }
     }
+    */
     
     useEffect(() => {
 
@@ -104,7 +87,6 @@ export function useCardAnimation(arrayRef: MutableRefObject<HTMLDivElement[] | n
 
         
        const rotationGenerator = new RotationKeyframeGenerator(cards.length);
-
        const rotationAnimator = new CardAnimator(cards, rotationGenerator);
 
         // shift animation depends on the rotation one
@@ -115,19 +97,19 @@ export function useCardAnimation(arrayRef: MutableRefObject<HTMLDivElement[] | n
         const shiftGenerator = new ShiftKeyframeGenerator(cards.length,rotationStationaryTime,rotationAnimationLength)
         const shiftAnimator = new CardAnimator(cards,shiftGenerator)
 
+        // first one has to be composite:replace, otherwise opacity is not animated
         rotationAnimator.playAnimation({indexDelay: 2000, composite: "replace"});
         shiftAnimator.playAnimation({indexDelay: 2000, composite: "add"})
         
-        console.log(rotationGenerator.getKeyframes().keyframes)
 
-        rotationAnimator.pauseAnimation()
-        shiftAnimator.pauseAnimation()
+        //rotationAnimator.pauseAnimation()
+        //shiftAnimator.pauseAnimation()
 
         const stackKeyframeGenerator = new StackKeyframeGenerator(cards.length)
 
         const stackAnimator = new CardAnimator(cards,stackKeyframeGenerator) 
 
-        stackAnimator.playAnimation({currentTimeDelay: {animationId : 'rotation', totalTime : rotationAnimationLength}})
+        //stackAnimator.playAnimation({currentTimeDelay: {animationId : 'rotation', totalTime : rotationAnimationLength}})
 
         //rotationAnimator.resetAnimation()
 
@@ -140,6 +122,7 @@ export function useCardAnimation(arrayRef: MutableRefObject<HTMLDivElement[] | n
 
 
         // bind click events
+        /*
         let clickListeners: EventListener[]  = [];
         arrayRef.current.map((element, index) => {
             const clickListener = handleClick(element,index) as EventListener;
@@ -152,6 +135,7 @@ export function useCardAnimation(arrayRef: MutableRefObject<HTMLDivElement[] | n
                 element?.removeEventListener('click',clickListeners[index])
             })
         }
+        */
 
 
     }, [])

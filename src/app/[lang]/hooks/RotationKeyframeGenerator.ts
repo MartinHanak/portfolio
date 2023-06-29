@@ -60,7 +60,7 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                 value: 1,
             },  {
                 property: 'translateZ',
-                value: zShift,
+                value: getTranslateZ(0),
                 units: 'px'
             }],
             duration: 0
@@ -76,7 +76,7 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                 value: 1,
             },  {
                 property: 'translateZ',
-                value: zShift,
+                value: getTranslateZ(0),
                 units: 'px'
             },  {
                 property: 'perspective',
@@ -91,17 +91,18 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
         for(let i = 1; i < Math.ceil( this.displayedObjects / 2); i++) {
 
             // transition
+            let angle = i * oneRotationAngle + angleOffset;
             frameValues.push({
                 keyValuePairs: [{
                     property: "rotate",
-                    value: i * oneRotationAngle + angleOffset,
+                    value: angle,
                     units: 'deg'  
                 },{
                     property: "opacity",
                     value: 1,
                 },  {
                     property: 'translateZ',
-                    value: zShift,
+                    value: getTranslateZ(angle),
                     units: 'px'
                 },  {
                     property: 'perspective',
@@ -112,17 +113,18 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
             })
 
             // stationary
+            angle = i * oneRotationAngle + angleOffset
             frameValues.push({
                 keyValuePairs: [{
                     property: "rotate",
-                    value: i * oneRotationAngle + angleOffset,
+                    value: angle,
                     units: 'deg'
                 },{
                     property: "opacity",
                     value: 1,
                 },  {
                     property: 'translateZ',
-                    value: zShift,
+                    value:getTranslateZ(angle),
                     units: 'px'
                 },  {
                     property: 'perspective',
@@ -146,7 +148,7 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                     value: 0,
                 },  {
                     property: 'translateZ',
-                    value: zShift,
+                    value: getTranslateZ(75),
                     units: 'px'
                 },  {
                     property: 'perspective',
@@ -169,7 +171,7 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                     value: 0,
                 },  {
                     property: 'translateZ',
-                    value: zShift,
+                    value:  getTranslateZ(hiddenAngle),
                     units: 'px'
                 },  {
                     property: 'perspective',
@@ -198,7 +200,7 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                     value: 1,
                 },  {
                     property: 'translateZ',
-                    value: zShift/2,
+                    value:  getTranslateZ(angle),
                     units: 'px'
                 },  {
                     property: 'perspective',
@@ -220,7 +222,7 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                         value: 1,
                     },  {
                         property: 'translateZ',
-                        value: zShift/2,
+                        value:  getTranslateZ(angle),
                         units: 'px'
                     },  {
                         property: 'perspective',
@@ -236,4 +238,28 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
     }
 
     
+}
+
+
+
+// gets 0 to 1 for angles -90 to +90
+function getTranslateZ(angle: number) {
+    let angleInRange =  angle % 360;
+
+    if(angleInRange > 90 && angleInRange < 180) {
+        return 1
+    } else if (angleInRange > 180 && angleInRange  < 270) {
+        return 0
+    } else {
+        
+        if(angleInRange > 180) {
+            // values from 0 to 0.5
+            return (angleInRange - 270)/90 * 0.5
+        }else if(angleInRange < 180) {
+            // values from 0.5 to 1.0
+            return angleInRange/90 * 0.5 + 0.5;
+        } else {
+            return 0
+        }
+    }
 }
