@@ -4,7 +4,8 @@ import { useTranslation } from "@/app/i18n";
 
 interface Skills {
     id: string,
-    lang: Locale
+    lang: Locale,
+    active: boolean
 }
 
 export async function Skills({ id, lang }: Skills) {
@@ -36,7 +37,7 @@ export async function Skills({ id, lang }: Skills) {
 
 interface SkillsSection {
     name: string,
-    description: string
+    description: string,
 }
 
 async function SkillsSection({ name, description }: SkillsSection) {

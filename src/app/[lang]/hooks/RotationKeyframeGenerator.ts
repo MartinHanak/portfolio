@@ -45,7 +45,16 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
             angleOffset = oneRotationAngle / 2;
         }
 
-        // initial = 0 rotaion
+
+        // shift timings
+        // timings
+        const shiftTranslatePercentage = 80;
+
+        const shiftTransitionFraction = 0.33;
+        const shiftTransitionTime = shiftTransitionFraction * stationaryTime / 2 ; // 2 transition up and down during stacionary time
+        const shiftUpTime = stationaryTime - shiftTransitionTime * 2;
+
+        // initial = 0 rotaion, shift up
         frameValues.push({
             keyValuePairs: [ {
                 property: 'perspective',
@@ -62,15 +71,24 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                 property: 'translateZ',
                 value: getTranslateZ(0),
                 units: 'px'
+            },{
+                property: 'translateY',
+                value: shiftTranslatePercentage,
+                units: `%`
             }],
             duration: 0
         })
-        // stacionary at the beginning
+
+        // shifting up
         frameValues.push({
-            keyValuePairs: [{
+            keyValuePairs: [ {
+                property: 'perspective',
+                value: perspective,
+                units: 'px'
+            }, {
                 property: "rotate",
                 value: angleOffset,
-                units: 'deg'  
+                units: 'deg'
             },{
                 property: "opacity",
                 value: 1,
@@ -78,13 +96,65 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                 property: 'translateZ',
                 value: getTranslateZ(0),
                 units: 'px'
-            },  {
+            },{
+                property: 'translateY',
+                value: 0,
+                units: `%`
+            }],
+            duration: shiftTransitionTime
+        })
+
+        // shifted up, stacionary
+        frameValues.push({
+            keyValuePairs: [ {
                 property: 'perspective',
                 value: perspective,
                 units: 'px'
+            }, {
+                property: "rotate",
+                value: angleOffset,
+                units: 'deg'
+            },{
+                property: "opacity",
+                value: 1,
+            },  {
+                property: 'translateZ',
+                value: getTranslateZ(0),
+                units: 'px'
+            },{
+                property: 'translateY',
+                value: 0,
+                units: `%`
             }],
-            duration: stationaryTime
+            duration: shiftUpTime
         })
+
+        // shift down
+        frameValues.push({
+            keyValuePairs: [ {
+                property: 'perspective',
+                value: perspective,
+                units: 'px'
+            }, {
+                property: "rotate",
+                value: angleOffset,
+                units: 'deg'
+            },{
+                property: "opacity",
+                value: 1,
+            },  {
+                property: 'translateZ',
+                value: getTranslateZ(0),
+                units: 'px'
+            },{
+                property: 'translateY',
+                value: shiftTranslatePercentage,
+                units: `%`
+            }],
+            duration: shiftTransitionTime
+        })
+
+        
 
         // right cards displayed
         
@@ -108,6 +178,10 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                     property: 'perspective',
                     value: perspective,
                     units: 'px'
+                },{
+                    property: 'translateY',
+                    value: shiftTranslatePercentage,
+                    units: `%`
                 }],
                 duration: transitionTime
             })
@@ -130,6 +204,10 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                     property: 'perspective',
                     value: perspective,
                     units: 'px'
+                },{
+                    property: 'translateY',
+                    value: shiftTranslatePercentage,
+                    units: `%`
                 }],
                 duration: stationaryTime
             })
@@ -154,6 +232,10 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                     property: 'perspective',
                     value: perspective,
                     units: 'px'
+                },{
+                    property: 'translateY',
+                    value: shiftTranslatePercentage,
+                    units: `%`
                 }
                 ],
             
@@ -177,6 +259,10 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                     property: 'perspective',
                     value: perspective,
                     units: 'px'
+                }, {
+                    property: 'translateY',
+                    value: shiftTranslatePercentage,
+                    units: `%`
                 }
                 ],
             
@@ -206,6 +292,10 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                     property: 'perspective',
                     value: perspective,
                     units: 'px'
+                }, {
+                    property: 'translateY',
+                    value: shiftTranslatePercentage,
+                    units: `%`
                 }],
                 duration: transitionTime
             })
@@ -228,6 +318,10 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
                         property: 'perspective',
                         value: perspective,
                         units: 'px'
+                    }, {
+                        property: 'translateY',
+                        value: shiftTranslatePercentage,
+                        units: `%`
                     }],
                     duration: stationaryTime
                 })

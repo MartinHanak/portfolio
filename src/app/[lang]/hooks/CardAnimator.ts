@@ -1,4 +1,6 @@
+import { isPartiallyEmittedExpression } from "typescript";
 import KeyframeGenerator from "./KeyframeGenerator";
+import { time } from "console";
 
 interface playAnimationOptions {
     composite?:CompositeOperation,
@@ -42,10 +44,8 @@ export class CardAnimator {
                         let totalTime = playOptions.currentTimeDelay.totalTime;
 
                         let currentTime = Number(animation.currentTime) % totalTime;
-                        console.log(`currenttime: ${currentTime}`)
-                        console.log(`total time: ${totalTime}`)
+      
 
-                        console.log(animation)
                         keyframes = this.keyframeGenerator
                         .getKeyframes({currentTimeOffset: currentTime,totalTime: totalTime}).keyframes;
 
@@ -80,15 +80,52 @@ export class CardAnimator {
         return computedStyles;
     }
 
-    pauseAnimation() {
+    pauseAnimation(waitForFirstFinish?:boolean) {
         const animationId = this.keyframeGenerator.getKeyframeAnimationOptions().id;
 
         const pausePromises: Promise<boolean>[] = [];
 
+
+        if(!waitForFirstFinish) {
+            this.cards.forEach((card) => {
+                card.getAnimations().forEach((animation) => {
+                    if(animation.id === animationId) {
+                        animation.pause();
+                    }
+                })
+            })
+        } else {
+            const times = this.keyframeGenerator.getKeyframes().keyframeTimes;
+            const oneAngleRotationTime = times[times.length -1 ] - times[times.length - 3];
+            const totalTime = times[times.length - 1 ];
+            
+            let currentTime = 0;
+             this.cards[0].getAnimations().map((animation) => {
+                if(animation.id === animationId) {
+                    currentTime = Number(animation.currentTime);
+                }
+            })
+        
+
+            let timeDelay = 2000;
+
+            if(currentTime < totalTime /2 ) {
+                timeDelay = (totalTime - currentTime) % oneAngleRotationTime
+            } else {
+                timeDelay = currentTime % oneAngleRotationTime
+            }
+
+            setTimeout(() => {
+                this.pauseAnimation()
+            }, timeDelay)
+        }
+    }
+ 
+    unpauseAnimation() {
         this.cards.forEach((card) => {
             card.getAnimations().forEach((animation) => {
-                if(animation.id === animationId) {
-                    animation.pause();
+                if(animation.id === this.keyframeGenerator.getKeyframeAnimationOptions().id )  {
+                    animation.play()
                 }
             })
         })
@@ -141,7 +178,6 @@ export class CardAnimator {
         })
 
         Promise.all(animationPromises).then(() => {
-            console.log("animation complete")
             this.commitStyle()
             this.deleteAnimation()
         })

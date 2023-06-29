@@ -35,7 +35,7 @@ export default class StackKeyframeGenerator extends KeyframeGenerator {
         }
 
 
-        const maxAngleRotation = 60;
+        const maxAngleRotation = 30;
 
         let angle = maxAngleRotation;
         // first half animation = rotate back
@@ -46,7 +46,6 @@ export default class StackKeyframeGenerator extends KeyframeGenerator {
             angle =  maxAngleRotation * (totalTime - currentTimeOffset) / (totalTime);
         }
 
-        console.log(`chosen angle:${angle}`)
 
         
 
@@ -55,10 +54,6 @@ export default class StackKeyframeGenerator extends KeyframeGenerator {
                 property: 'rotate',
                 value: 0, 
                 units: 'deg'
-            }, {
-                property: 'translateY',
-                value: 0,
-                units: 'px'
             }],
             duration: 0
         })
@@ -68,12 +63,8 @@ export default class StackKeyframeGenerator extends KeyframeGenerator {
                 property: 'rotate',
                 value: angle, 
                 units: 'deg'
-            }, {
-                property: 'translateY',
-                value: 0,
-                units: 'px'
             }],
-            duration: 2000
+            duration: 500
         })
 
         return frameValues

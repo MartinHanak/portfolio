@@ -14,7 +14,8 @@ export default class ShiftKeyframeGenerator extends KeyframeGenerator {
         const options : KeyframeAnimationOptions = {
             duration: this.getDuration(),
             iterations: Infinity,
-            id: "shift"
+            id: "shift",
+            
         }
         return options;
     }
@@ -39,6 +40,8 @@ export default class ShiftKeyframeGenerator extends KeyframeGenerator {
             }],
             duration: 0
         })
+
+
 
         // transition up
         frameValues.push({

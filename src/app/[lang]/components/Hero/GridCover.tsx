@@ -22,13 +22,11 @@ export function GridCover({ resetParentAnimation }: GridCover) {
             setHeight(grid.current.offsetHeight);
 
             let rowLength = Number(getCssVarValue('hexagons-in-row'));
-            console.log(`rowLength: ${rowLength}`)
             if (isNaN(rowLength)) {
                 rowLength = 5;
             }
 
             let gapSize = Number(getCssVarValue('gap-size'));
-            console.log(`gapSize: ${gapSize}`)
             if (isNaN(gapSize)) {
                 gapSize = 4;
             }
@@ -44,8 +42,7 @@ export function GridCover({ resetParentAnimation }: GridCover) {
             const hexagonWidth = 2 * hexagonSide;
 
             const rowNumber = Math.floor(grid.current.offsetHeight / (hexagonHeight + gapSize));
-            console.log(`rowNumber: ${rowNumber}`)
-            console.log(`grid height: ${grid.current.offsetHeight}`)
+
 
 
 
