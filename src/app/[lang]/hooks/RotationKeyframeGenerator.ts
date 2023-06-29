@@ -48,7 +48,7 @@ export default class RotationKeyframeGenerator extends KeyframeGenerator {
 
         // shift timings
         // timings
-        const shiftTranslatePercentage = 80;
+        const shiftTranslatePercentage = 50;
 
         const shiftTransitionFraction = 0.33;
         const shiftTransitionTime = shiftTransitionFraction * stationaryTime / 2 ; // 2 transition up and down during stacionary time

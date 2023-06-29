@@ -21,6 +21,7 @@ export default async function Home({ params: { lang } }: Home) {
 
   const t_navbar = (await useTranslation(lang, 'navbar')).t
   const t_footer = (await useTranslation(lang, 'footer')).t
+  const t_skills = (await useTranslation(lang, 'skills')).t
 
   const languageSwitchLabels: LanguageSwitchLabels = {
     language: t_navbar('language'),
@@ -51,7 +52,11 @@ export default async function Home({ params: { lang } }: Home) {
       <Container>
         <About id={navbarLinks.about} lang={lang} />
 
-        <Skills id={navbarLinks.skills} lang={lang} />
+        <Skills id={navbarLinks.skills}
+          heading={t_skills('heading')}
+          frontendText={t_skills('frontend')}
+          backendText={t_skills('backend')}
+          toolsText={t_skills('tools')} />
 
         <Projects id={navbarLinks.projects} lang={lang} />
 

@@ -38,7 +38,9 @@ export function useCardAnimation(arrayRef: MutableRefObject<HTMLDivElement[] | n
       
     
        rotationAnimator.playAnimation({indexDelay: 2000, composite: "replace"})
-       rotationAnimator.pauseAnimation()
+       if(!active) {
+            rotationAnimator.pauseAnimation()
+       }
 
 
         pause.current = () => {
