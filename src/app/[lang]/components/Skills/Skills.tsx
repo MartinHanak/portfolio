@@ -56,9 +56,12 @@ export function Skills({ id, heading, frontendText, backendText, toolsText }: Sk
     function createClickHandler(index: number) {
         return () => {
 
-            let newState = [false, false, false];
-            newState[index] = true;
-            setActiveArray(newState);
+            setActiveArray((prev) => {
+                let newState = [...prev];
+                newState[index] = !newState[index];
+                return newState
+            })
+
         }
     }
 
