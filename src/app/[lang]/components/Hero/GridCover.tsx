@@ -95,7 +95,7 @@ export function GridCover({ resetParentAnimation }: GridCover) {
                                 backgroundSize: `${grid.current.offsetWidth}px auto`,
                                 backgroundPosition: `left -${backgroundPoxX}px top -${backgroundPoxY}px`
                             }}
-                            className={`absolute-hexagon w-4 h-4 absolute top-0 left-0  ${hide ? 'opacity-0' : 'animate-wave'}`}>
+                            className={`absolute-hexagon w-4 h-4 absolute top-0 left-0 opacity-0  ${hide ? 'opacity-0' : 'animate-wave'}`}>
 
                         </div>
                     ))

@@ -52,7 +52,7 @@ module.exports = {
       keyframes: {
         waveDisappearAppear: {
           '0%' : {
-            opacity: 1,
+            opacity: 0,
             transform: 'scale(1.0)'
           },
           '10%' : {
@@ -60,48 +60,48 @@ module.exports = {
             transform: 'scale(1.0)'
           },
           '30%': {
-            opacity: 0,
+            opacity: 1,
           },
-          '40%' : {
+          '50%' : {
             opacity: 1,
             transform: 'scale(1.0)'
           },
           '70%' : {
-            opacity: 1,
+            opacity: 0,
             transform: 'scale(1.0)'
           },
           '90%' : {
-            opacity: 1
+            opacity: 0
           },
           '100%' : {
-            opacity: 1
+            opacity: 0
           }
         },
         waveReverse: {
           '0%' : {
+            opacity: 1,
+            transform: 'scale(1.0)'
+          },
+          '10%' : {
+            opacity: 1,
+            transform: 'scale(1.0)'
+          },
+          '30%': {
             opacity: 0,
-            transform: 'scale(1.0)'
-          },
-          '20%' : {
-            opacity: 1,
-            transform: 'scale(1.0)'
-          },
-          '40%': {
-            opacity: 1,
           },
           '50%' : {
             opacity: 0,
             transform: 'scale(1.0)'
           },
-          '70%' : {
+          '60%' : {
             opacity: 0,
             transform: 'scale(1.0)'
           },
-          '90%' : {
-            opacity: 0
+          '80%' : {
+            opacity: 1
           },
           '100%' : {
-            opacity: 0
+            opacity: 1
           }
         },
         slideIn: {
