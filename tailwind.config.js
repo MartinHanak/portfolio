@@ -56,7 +56,7 @@ module.exports = {
             transform: 'scale(1.0)'
           },
           '10%' : {
-            opacity: 0,
+            opacity: 1,
             transform: 'scale(1.0)'
           },
           '30%': {
@@ -83,7 +83,7 @@ module.exports = {
             transform: 'scale(1.0)'
           },
           '10%' : {
-            opacity: 1,
+            opacity: 0,
             transform: 'scale(1.0)'
           },
           '30%': {

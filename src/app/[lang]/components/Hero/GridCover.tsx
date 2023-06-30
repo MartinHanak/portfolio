@@ -47,7 +47,7 @@ export function GridCover({ resetParentAnimation }: GridCover) {
 
 
             // wave travel speed in px/s
-            const waveSpeed = 100;
+            const waveSpeed = 200;
             // wave start
             const center = [grid.current.offsetWidth / 3, grid.current.offsetHeight / 2]
 
