@@ -28,6 +28,7 @@ export async function Projects({ id, lang }: Projects) {
                 name="Gravitorium"
                 shortDescription={t_grav('shortDescription')}
                 videoURL='/gravitorium.mp4'
+                previewImage='/gravitoriumPreview.png'
             >
                 <ProjectInfo
                     lang={lang}
@@ -49,6 +50,7 @@ export async function Projects({ id, lang }: Projects) {
                 name="Quizzillionaire"
                 shortDescription={t_quiz('shortDescription')}
                 videoURL='/quizzillionaire.mp4'
+                previewImage='/quizzillionairePreview.png'
             >
                 <ProjectInfo
                     lang={lang}
@@ -80,6 +82,7 @@ export async function Projects({ id, lang }: Projects) {
                 name="Portfolio"
                 shortDescription={t_portfolio('shortDescription')}
                 videoURL='/portfolio.mp4'
+                previewImage='/portfolioPreview.png'
             >
                 <ProjectInfo
                     lang={lang}

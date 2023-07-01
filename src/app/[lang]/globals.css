@@ -13,13 +13,13 @@
     --hexagon-container-height: calc(var(--hexagon-side-length) * 2 * 0.866);
     --hexagon-border-color: black;
 
-    --background-hexagon-image: url('/test_image_mobile.jpg');
+    --background-hexagon-image: url('/heroImageMobile.webp');
 }
 
 @media (min-width: 768px) { 
     :root {
         --hexagons-in-row: 15;
-        --background-hexagon-image: url('/test_image.jpg');
+        --background-hexagon-image: url('/heroImage.webp');
     }
 }
 

@@ -2,23 +2,26 @@
 // DOES NOT WORK WITHOUT CHECKING WINDOW:   import ReactPlayer from "react-player"
 import dynamic from "next/dynamic";
 import { Suspense, useState } from "react";
+import { PlayIcon } from "./PlayIcon";
 const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
 
 export interface VideoPlayer {
-    videoURL: string
+    videoURL: string,
+    previewImage: string
 }
 
-export function VideoPlayer({ videoURL }: VideoPlayer) {
+export function VideoPlayer({ videoURL, previewImage }: VideoPlayer) {
 
-    const [playing, setPlaying] = useState(false);
+
 
     return (
         <Suspense fallback={<div className="w-full h-full bg-white"></div>}>
-            <div className="w-full aspect-video bg-white"
-                onClick={() => setPlaying(true)}>
+            <div className="w-full aspect-video bg-white">
 
                 <ReactPlayer
-                    url={videoURL} width='100%' height='100%' muted light playing={playing} loop
+                    url={videoURL} width='100%' height='100%' muted playing loop
+                    playIcon={<PlayIcon />}
+                    light={<img src={previewImage} alt={`${videoURL} Thumbnail`} />}
                     config={{
                         file: {
                             attributes: {

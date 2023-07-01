@@ -23,12 +23,13 @@ export interface Project {
     shortDescription: string,
 
     videoURL: string,
+    previewImage: string,
 
     children: React.ReactNode
 }
 
 
-export function Project({ lang, name, shortDescription, videoURL, children }: Project) {
+export function Project({ lang, name, shortDescription, videoURL, previewImage, children }: Project) {
     const [hasWindow, setHasWindow] = useState(false);
 
     const playerRef = useRef();
@@ -51,7 +52,7 @@ export function Project({ lang, name, shortDescription, videoURL, children }: Pr
 
             <div className='relative w-full aspect-video z-10 p-2 '>
 
-                {hasWindow ? <VideoPlayer videoURL={videoURL} /> : <div className='w-full h-full bg-white'></div>}
+                {hasWindow ? <VideoPlayer previewImage={previewImage} videoURL={videoURL} /> : <div className='w-full h-full bg-white'></div>}
 
                 <div
                     style={angledCorners ? {
