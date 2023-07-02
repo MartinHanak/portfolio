@@ -42,8 +42,10 @@ export function ContactForm({ id, heading, emailHeading, messageHeading, send }:
     }
     */
 
+
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
 
         const data = {
             message: message,
@@ -52,6 +54,7 @@ export function ContactForm({ id, heading, emailHeading, messageHeading, send }:
 
         const res = fetch(`${BACKEND_URL}/en/api`, {
             body: JSON.stringify(data),
+            mode: 'cors',
             method: "post",
             headers: {
                 'Content-Type': 'application/json'
@@ -83,7 +86,7 @@ export function ContactForm({ id, heading, emailHeading, messageHeading, send }:
             <textarea rows={7} className="text-black mb-4 w-full p-4 rounded-sm" name="message" id="message"
                 value={message} onChange={(e) => { setMessage(e.target.value) }}></textarea>
 
-            <button className="rounded-sm font-bold border-solid border-2 border-white px-4 py-2 w-full hover:bg-white hover:text-black" type="submit" >{send}</button>
+            <button className="rounded-sm font-bold border-solid border-2 border-white px-4 py-2 w-full hover:bg-white hover:text-black" type="submit">{send}</button>
         </form>
 
     )

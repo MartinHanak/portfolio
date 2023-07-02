@@ -3,12 +3,33 @@ import { prisma } from "@/db"
 import sendMail from "../util/mail"
 
 
-export async function GET() {
-    const data = {"message": "Hello World"}
+export async function GET(request: NextRequest) {
+    let nasaURL = request.nextUrl.searchParams.get('url');
+    if(!nasaURL) {
 
-    const messages = await prisma.message.findMany();
+        let errorResponse = {
+            status: "fail",
+            message: "Incorrect or no URL provided."
+        }
 
-    return NextResponse.json(messages)
+        return new NextResponse(JSON.stringify(errorResponse), {
+            status: 400,
+            headers: { "Content-Type": "application/json" },
+        });
+    } else {
+        try {
+            const nasaResponse = await fetch(nasaURL);
+            const jsonData = await nasaResponse.json();
+
+             return NextResponse.json(jsonData);
+
+        } catch( error: any) {
+             return new NextResponse(JSON.stringify({status: "fail", message: "Error while importing data."}), {
+                status: 500,
+                headers: { "Content-Type": "application/json" },
+            });
+        }
+    }
 }
 
 export async function POST(request: NextRequest) {
