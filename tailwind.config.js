@@ -55,6 +55,10 @@ module.exports = {
             opacity: 0,
             transform: 'scale(1.0)'
           },
+          '5%' : {
+            opacity: 0,
+            transform: 'scale(1.0)'
+          },
           '10%' : {
             opacity: 1,
             transform: 'scale(1.0)'
@@ -64,6 +68,10 @@ module.exports = {
           },
           '50%' : {
             opacity: 1,
+            transform: 'scale(1.0)'
+          },
+          '55%' : {
+            opacity: 0,
             transform: 'scale(1.0)'
           },
           '70%' : {
@@ -82,7 +90,11 @@ module.exports = {
             opacity: 1,
             transform: 'scale(1.0)'
           },
-          '10%' : {
+          '5%' : {
+            opacity: 1,
+            transform: 'scale(1.0)'
+          },
+          '15%' : {
             opacity: 0,
             transform: 'scale(1.0)'
           },
@@ -93,11 +105,12 @@ module.exports = {
             opacity: 0,
             transform: 'scale(1.0)'
           },
-          '60%' : {
-            opacity: 0,
+
+          '70%' : {
+            opacity: 1,
             transform: 'scale(1.0)'
           },
-          '80%' : {
+          '90%' : {
             opacity: 1
           },
           '100%' : {
