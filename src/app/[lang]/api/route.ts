@@ -40,6 +40,18 @@ export async function GET(request: NextRequest) {
     }
 }
 
+// allow CORS POST requests
+export async function OPTIONS() {
+    return new Response(null, {
+        status: 200,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': "GET,POST,OPTIONS",
+            'Access-Control-Allow-Headers': "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+        }
+    })
+}
+
 export async function POST(request: NextRequest) {
     const data = await request.json()
     
@@ -63,6 +75,8 @@ export async function POST(request: NextRequest) {
                 status: 200,
                 headers: {
                     'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': "POST,OPTIONS",
+                    'Access-Control-Allow-Headers': "Content-Type"
                 }
             })
 }
