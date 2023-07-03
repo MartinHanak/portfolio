@@ -44,12 +44,25 @@ export async function POST(request: NextRequest) {
     const data = await request.json()
     
     if(!data.message || !data.email) {
-        return NextResponse.json({ error: 'POST request does not contain email or message in its body' }, { status: 403 });
+        return NextResponse.json({ error: 'POST request does not contain email or message in its body' },
+         { status: 403 });
     }
 
     await prisma.message.create({ data: { message: data.message, email: data.email } })
 
-    sendMail(data.email, data.message)
+    try {
+        sendMail(data.email, data.message)
+    } catch (err) {
+        return NextResponse.json({ error: 'Server error when mail sent.' },
+         { status: 500 });
+    }
 
-    return NextResponse.json({message: 'Email sent successfully'});
+
+
+    return new Response(JSON.stringify({message: 'Email sent successfully'}), {
+                status: 200,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                }
+            })
 }
