@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: t('title'),
-    applicationName: `t('title') Portfolio`,
+    applicationName: `${t('title')} Portfolio`,
     metadataBase: new URL("https://martinhanak.com"),
     description: t('description'),
     openGraph: {
