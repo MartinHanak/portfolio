@@ -32,7 +32,7 @@ type Props = {
   params: { lang: Locale }
 }
 
-export async function generateMetadata({ params }: Props, parent?: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const nextInstance = await initI18next(params.lang, 'metadata')
   const t = nextInstance.getFixedT(params.lang, 'metadata')
