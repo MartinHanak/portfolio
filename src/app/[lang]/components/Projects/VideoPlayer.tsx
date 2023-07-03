@@ -19,7 +19,7 @@ export function VideoPlayer({ videoURL, previewImage }: VideoPlayer) {
             <div className="w-full aspect-video bg-white">
 
                 <ReactPlayer
-                    url={videoURL} width='100%' height='100%' muted playing loop
+                    url={videoURL} width='100%' height='100%' muted playing loop playsinline
                     playIcon={<PlayIcon />}
                     light={<img src={previewImage} alt={`${videoURL} Thumbnail`} />}
                     config={{
