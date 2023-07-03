@@ -114,9 +114,11 @@ export function Navbar({ languageSwitch, navbar }: Navbar) {
                                 ${showMobileMenu ? 'opacity-100 pointer-events-auto scale-100'
                                             : 'opacity-0 pointer-events-none scale-0'}
                                 `}>
-                                    <a href={`#${navbar[elementID]}`}>
+                                    <a href={`#${navbar[elementID]} block w-full h-full`}>
                                         <div className={`inner-hexagon font-bold text-lg ${hoverColors[index]}`}>
+
                                             {navbar[elementID]}
+
                                         </div>
                                     </a>
                                 </div>

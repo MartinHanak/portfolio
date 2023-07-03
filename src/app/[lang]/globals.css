@@ -54,7 +54,7 @@
         --hexagon-border-size: 4px;
 
         /* outer hexagon dimensions */
-        --hexagon-container-width: calc(var(--hexagon-side-length)*2);
+        --hexagon-container-width: calc(var(--hexagon-side-length) * 2);
         --hexagon-container-height: calc(var(--hexagon-side-length) * 2 * 0.866);
 
         /* 
@@ -81,7 +81,7 @@
         --hexagon-border-size: 4px;
 
         /* outer hexagon dimensions */
-        --hexagon-container-width: calc(var(--hexagon-side-length)*2);
+        --hexagon-container-width: calc(var(--hexagon-side-length) * 2);
         --hexagon-container-height: calc(var(--hexagon-side-length) * 2 * 0.866);
 
         /* 
@@ -104,6 +104,8 @@
         height: var(--hexagon-container-height);
 
         clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
+    }
+    .hexagon a {
     }
 
     /* Navbar mobile positioning */
@@ -227,16 +229,21 @@
     
 
     .inner-hexagon {
+
         background-color: var(--inner-hexagon-color);
-        width:100%;
+        width: 100%;
         height: 100%;
 
         clip-path: polygon(
             calc(0% + var(--middle-shift)) 50%, 
-            calc(25% + var(--top-shift)) calc(0% +var(--border-width)), calc(75% - var(--top-shift)) calc(0% +var(--border-width)), 
+            calc(25% + var(--top-shift)) calc(0% + var(--border-width)),
+            calc(75% - var(--top-shift)) calc(0% + var(--border-width)), 
             calc(100% - var(--middle-shift)) 50%, 
-            calc(75% - var(--top-shift)) calc(100% - var(--border-width)), calc(25% + var(--top-shift)) calc(100% - var(--border-width))
+            calc(75% - var(--top-shift)) calc(100% - var(--border-width)),
+            calc(25% + var(--top-shift)) calc(100% - var(--border-width))
         );
+        
+
 
         display: flex;
         justify-content: center;
