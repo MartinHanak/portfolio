@@ -58,6 +58,7 @@ export function ContactForm({ id, heading, emailHeading, messageHeading, send }:
         const res = fetch(`${BACKEND_URL}/en/api`, {
             body: JSON.stringify(data),
             method: "post",
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json'
             }
