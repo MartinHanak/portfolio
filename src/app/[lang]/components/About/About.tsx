@@ -15,7 +15,7 @@ export async function About({ id, lang }: About) {
     const aboutText: string[] | string = t('about', { returnObjects: true });
 
     return (
-        <div id={id} className="grid grid-rows-content grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-4 mt-16">
+        <section id={id} className="grid grid-rows-content grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-4 mt-16">
             <div className="flex flex-col justify-center items-start px-4 lg:px-0">
                 <span className="block">{t('aboveName')} {t('beforeName')}</span>
                 <span className="block text-4xl font-bold">{t('name')}</span>
@@ -34,6 +34,6 @@ export async function About({ id, lang }: About) {
                 })
                     : <p className="mb-4">{aboutText}</p>}
             </div>
-        </div>
+        </section>
     )
 }

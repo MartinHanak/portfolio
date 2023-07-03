@@ -5,7 +5,7 @@ import { getOptions } from './settings'
 
 import { Locale } from '@/i18n-config'
 
-const initI18next = async (lng:string, ns: string) => {
+export const initI18next = async (lng:string, ns: string) => {
   const i18nInstance = createInstance()
   await i18nInstance
     .use(initReactI18next)

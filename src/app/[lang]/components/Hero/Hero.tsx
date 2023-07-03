@@ -31,7 +31,7 @@ export function Hero({ id, subheading }: Hero) {
     }
 
     return (
-        <div id={id} className="relative w-full h-full   ">
+        <section id={id} className="relative w-full h-full   ">
             <Container>
                 <div className="pl-8 md:pl-8 pt-16 pb-16   md:pt-32  md:pb-64 w-full h-full min-h-[400px]
             flex flex-col  justify-center items-start gap-4
@@ -53,7 +53,7 @@ export function Hero({ id, subheading }: Hero) {
                 </div>
             </Container>
 
-        </div>
+        </section>
 
     )
 }

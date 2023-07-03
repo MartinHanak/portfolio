@@ -18,7 +18,7 @@ export async function Projects({ id, lang }: Projects) {
     const t_portfolio = (await useTranslation(lang, 'portfolioProject')).t;
 
     return (
-        <div id={id} className='mt-32'>
+        <section id={id} className='mt-32'>
             <h2 className="text-4xl font-bold mb-2 mx-4 lg:mx-0">{t('heading')}</h2>
             <p className="mb-8 mx-4 lg:mx-0">{t('subheading')}</p>
 
@@ -98,6 +98,6 @@ export async function Projects({ id, lang }: Projects) {
             </Project>
 
 
-        </div>
+        </section>
     )
 }

@@ -50,16 +50,17 @@ export default async function Home({ params: { lang } }: Home) {
       </Background>
 
       <Container>
-        <About id={navbarLinks.about} lang={lang} />
+        <main>
+          <About id={navbarLinks.about} lang={lang} />
 
-        <Skills id={navbarLinks.skills}
-          heading={t_skills('heading')}
-          frontendText={t_skills('frontend')}
-          backendText={t_skills('backend')}
-          toolsText={t_skills('tools')} />
+          <Skills id={navbarLinks.skills}
+            heading={t_skills('heading')}
+            frontendText={t_skills('frontend')}
+            backendText={t_skills('backend')}
+            toolsText={t_skills('tools')} />
 
-        <Projects id={navbarLinks.projects} lang={lang} />
-
+          <Projects id={navbarLinks.projects} lang={lang} />
+        </main>
       </Container >
 
 

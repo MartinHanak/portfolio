@@ -67,14 +67,14 @@ export function Skills({ id, heading, frontendText, backendText, toolsText }: Sk
 
 
     return (
-        <div id={id} ref={skillsWrapper} className="flex flex-col justify-center items-stretch my-8 mt-32">
+        <section id={id} ref={skillsWrapper} className="flex flex-col justify-center items-stretch my-8 mt-32">
 
             <h2 className="text-4xl font-bold mx-4 lg:mx-0 mb-8">{heading}</h2>
 
             <SkillsSection active={activeArray[0]} onClick={createClickHandler(0)} name="Frontend" description={frontendText} />
             <SkillsSection active={activeArray[1]} onClick={createClickHandler(1)} name="Backend" description={backendText} />
             <SkillsSection active={activeArray[2]} onClick={createClickHandler(2)} name="Tools" description={toolsText} />
-        </div>
+        </section>
     )
 }
 
