@@ -20,8 +20,16 @@ export async function GET(request: NextRequest) {
         try {
             const nasaResponse = await fetch(nasaURL);
             const jsonData = await nasaResponse.json();
+            const sendData = JSON.stringify(jsonData)
 
-             return NextResponse.json(jsonData);
+            return new Response(sendData, {
+                status: 200,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET',
+                    'Access-Control-Allow-Headers': 'Content-Type',
+                }
+            })
 
         } catch( error: any) {
              return new NextResponse(JSON.stringify({status: "fail", message: "Error while importing data."}), {
@@ -33,8 +41,6 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-        console.log("HELLO")
-
     const data = await request.json()
     
     if(!data.message || !data.email) {
