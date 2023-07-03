@@ -47,7 +47,10 @@ export function LanguageSwitch({ language, czech, english }: LanguageSwitchLabel
             >
                 <div className="inner-hexagon flex-col gap-1">
                     <span className='block pt-2'>{language}</span>
-                    <div className='h-auto w-6 border-solid border-black border-[1px]'>{language === "Language" ? <EnglishFlag /> : <CzechFlag />}</div>
+                    <div className=' border-solid border-black border-[1px]'>
+                        {language === "Language" ? <EnglishFlag width="24px" height="18px" />
+                            : <CzechFlag width="24px" height="18px" />}
+                    </div>
                 </div>
             </div>
 

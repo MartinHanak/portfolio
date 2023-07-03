@@ -43,6 +43,7 @@ module.exports = {
       },
       aspectRatio: {
         'hexagon': '1.1547',
+        '4-3': '1.33333333333'
       },
       animation: {
         wave: 'waveDisappearAppear 20s linear infinite',
