@@ -2,9 +2,9 @@ import './globals.css'
 import { Locale, i18n } from '../../i18n-config'
 
 import { IBM_Plex_Mono } from 'next/font/google';
-import { Metadata, ResolvingMetadata } from 'next';
-import { useTransition } from 'react';
-import { initI18next, useTranslation } from '../i18n';
+import { Metadata } from 'next';
+import { initI18next } from '../i18n';
+import Script from 'next/script';
 
 
 // for now: causes error with server actions experimental feature when submitting a form
@@ -104,7 +104,20 @@ export default function Root({
 }) {
   return (
     <html lang={params.lang} className={`${IBMFont.variable} ${IBMFont.className}`}>
+
       <body>{children}</body>
+
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-MV2B1V4J9P" />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-MV2B1V4J9P');
+        `}
+      </Script>
+
     </html>
   )
 }
