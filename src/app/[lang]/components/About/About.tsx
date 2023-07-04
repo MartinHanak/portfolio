@@ -16,14 +16,14 @@ export async function About({ id, lang }: About) {
 
     return (
         <section id={id} className="grid grid-rows-content grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-4 mt-16">
-            <div className="flex flex-col justify-center items-start px-4 lg:px-0">
+            <div className="flex flex-col justify-center items-start px-4 lg:pl-0 lg:pr-8">
                 <span className="block">{t('aboveName')} {t('beforeName')}</span>
                 <span className="block text-4xl font-bold">{t('name')}</span>
                 <span className="block text-lg mb-8">{t('belowName')}</span>
 
                 <p className="mb-16">{t('belowBelowName')}</p>
             </div>
-            <div className="px-4 lg:px-0">
+            <div className="px-4 lg:pl-0 lg:pr-0">
 
                 <h2 className="text-4xl font-bold mb-4 ">{t('title')}</h2>
 
