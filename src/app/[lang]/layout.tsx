@@ -107,17 +107,6 @@ export default function Root({
 
       <body>{children}</body>
 
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-MV2B1V4J9P" />
-      <Script id="google-analytics">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-MV2B1V4J9P');
-        `}
-      </Script>
-
     </html>
   )
 }

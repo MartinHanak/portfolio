@@ -97,11 +97,9 @@ export function Navbar({ languageSwitch, navbar }: Navbar) {
                             className="hexagon menuIcon cursor-pointer"
                             onClick={() => setShowMobileMenu((prev: boolean) => !prev)}
                         >
-                            <a href="#">
-                                <div className="inner-hexagon font-bold text-lg select-none">
-                                    <Hamburger closed={showMobileMenu} />
-                                </div>
-                            </a>
+                            <div className="inner-hexagon font-bold text-lg select-none">
+                                <Hamburger closed={showMobileMenu} />
+                            </div>
                         </div>
 
 
