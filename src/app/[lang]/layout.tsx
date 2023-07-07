@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t('description'),
       siteName: t('siteName'),
       locale: params.lang,
-      images: './portfolioPreview.webp'
+      images: 'https://martinhanak.com/portfolioPreview.webp'
     },
     robots: {
       index: true,
@@ -74,13 +74,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       }
     },
     icons: {
-      icon: '/MH_logo.svg',
-      shortcut: '/MH_logo.svg',
-      apple: '/MH_logo.svg',
-      other: {
-        rel: 'MH_logo',
-        url: '/MH_logo.svg',
-      },
+      // relative URLs are resolved wrong when using multi-language redirect
+      icon: [{ url: 'https://martinhanak.com/favicon.ico', rel: "icon", sizes: "any" },
+      { url: 'https://martinhanak.com/MH_logo.svg', rel: "icon", type: "image/svg+xml" }],
+      shortcut: 'https://martinhanak.com/favicon.png',
+      apple: [
+        { url: 'https://martinhanak.com/favicon.png' },
+        { url: 'https://martinhanak.com/favicon-3x.png', sizes: '180x180', type: 'image/png' },
+      ],
+      other: [
+        {
+          rel: 'apple-touch-icon-precomposed',
+          url: 'https://martinhanak.com/favicon.png',
+        },
+      ],
     },
     category: "Personal Portfolio"
   }
