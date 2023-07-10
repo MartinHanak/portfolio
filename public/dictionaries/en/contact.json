@@ -2,5 +2,6 @@
   "heading": "Contact Me",
   "email": "Your Email",
   "message": "Message",
-  "send": "Send Message"
+  "send": "Send Message",
+  "sentNotification": "Email sent!"
 }

@@ -1,6 +1,7 @@
 {
   "heading": "Kontakt",
-  "email": "Váš Email",
+  "email": "Váš email",
   "message": "Zpráva",
-  "send": "Poslat zprávu"
+  "send": "Poslat zprávu",
+  "sentNotification": "Email odeslán!"
 }

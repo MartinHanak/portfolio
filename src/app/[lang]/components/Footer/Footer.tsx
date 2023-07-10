@@ -19,7 +19,12 @@ export async function Footer({ id, lang }: Footer) {
         <footer className="w-full bg-gray-900 py-16">
             <Container>
                 <div className="grid grid-rows-2 grid-cols-1 gap-8 md:grid-rows-1 md:grid-cols-2 px-8">
-                    <ContactForm id={id} heading={t_contact('heading')} emailHeading={t_contact('email')} messageHeading={t_contact('message')} send={t_contact('send')} />
+                    <ContactForm id={id}
+                        heading={t_contact('heading')}
+                        emailHeading={t_contact('email')}
+                        messageHeading={t_contact('message')}
+                        send={t_contact('send')}
+                        sentNotification={t_contact('sentNotification')} />
                     <ContactInfo belowName={t_footer('belowName')} />
                 </div>
             </Container>

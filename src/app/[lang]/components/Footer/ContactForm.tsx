@@ -9,11 +9,12 @@ interface ContactForm {
     heading: string,
     emailHeading: string,
     messageHeading: string,
-    send: string
+    send: string,
+    sentNotification: string
 }
 
 
-export function ContactForm({ id, heading, emailHeading, messageHeading, send }: ContactForm) {
+export function ContactForm({ id, heading, emailHeading, messageHeading, send, sentNotification }: ContactForm) {
 
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
@@ -86,7 +87,7 @@ export function ContactForm({ id, heading, emailHeading, messageHeading, send }:
             onSubmit={handleSubmit}
         >
 
-            <Modal message="Email sent!" hidden={!showModal} />
+            <Modal message={sentNotification} hidden={!showModal} />
 
             <h3 className='font-bold text-4xl mb-4'>{heading}</h3>
 
