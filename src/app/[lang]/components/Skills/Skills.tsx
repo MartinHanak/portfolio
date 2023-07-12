@@ -14,6 +14,8 @@ export function Skills({ id, heading, frontendText, backendText, toolsText }: Sk
 
     const [activeArray, setActiveArray] = useState([true, false, false]);
 
+    const [manuallySelected, setManuallySelected] = useState([false, false, false])
+
     const skillsWrapper = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -56,7 +58,7 @@ export function Skills({ id, heading, frontendText, backendText, toolsText }: Sk
     function createClickHandler(index: number) {
         return () => {
 
-            setActiveArray((prev) => {
+            setManuallySelected((prev) => {
                 let newState = [...prev];
                 newState[index] = !newState[index];
                 return newState
@@ -71,9 +73,9 @@ export function Skills({ id, heading, frontendText, backendText, toolsText }: Sk
 
             <h2 className="text-4xl font-bold mx-4 lg:mx-0 mb-8">{heading}</h2>
 
-            <SkillsSection active={activeArray[0]} onClick={createClickHandler(0)} name="Frontend" description={frontendText} />
-            <SkillsSection active={activeArray[1]} onClick={createClickHandler(1)} name="Backend" description={backendText} />
-            <SkillsSection active={activeArray[2]} onClick={createClickHandler(2)} name="Tools" description={toolsText} />
+            <SkillsSection active={manuallySelected[0] || activeArray[0]} onClick={createClickHandler(0)} name="Frontend" description={frontendText} />
+            <SkillsSection active={manuallySelected[1] || activeArray[1]} onClick={createClickHandler(1)} name="Backend" description={backendText} />
+            <SkillsSection active={manuallySelected[2] || activeArray[2]} onClick={createClickHandler(2)} name="Tools" description={toolsText} />
         </section>
     )
 }
