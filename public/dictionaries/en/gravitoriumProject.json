@@ -4,7 +4,7 @@
   "shortDescription": "Online simulation of the Solar System dynamics",
 
   "longDescription": [
-    "Gravitorium is a real-time interactive simulation of the planets' motion in our Solar System. It is capable of precisely computing their motion and displaying planet trajectories."
+    "Gravitorium is a real-time interactive platform that simulates the motion of planets in our Solar System. It accurately computes and visually represents the trajectories of planets."
   ],
 
   "technologyDescription": [

@@ -8,7 +8,7 @@ export function ContactInfo({ belowName }: { belowName: string }) {
             <h4 className=' text-lg mb-20'>{belowName}</h4>
 
 
-            <a className='text-lg  lg:text-2xl ' href="mailto:martinhanak97@gmail.com">martinhanak97@gmail.com</a>
+            <a className='text-lg  lg:text-xl ' href="mailto:martinhanak97@gmail.com">martinhanak97@gmail.com</a>
 
 
             <div className='flex mt-8'>

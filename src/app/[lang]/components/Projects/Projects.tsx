@@ -91,7 +91,7 @@ export async function Projects({ id, lang }: Projects) {
                     longDescription={t_portfolio('longDescription', { returnObjects: true })}
                     technologyDescription={t_portfolio('technologyDescription', { returnObjects: true })}
                     mainTechList={['Next.js', 'Tailwind CSS', 'Web Animations API']}
-                    otherTechList={['i18next', 'prisma', 'MySQL', 'Server Components', 'Client Components', 'SEO']}
+                    otherTechList={['i18next', 'Prisma', 'MySQL', 'Server Components', 'Client Components', 'SEO']}
                     websiteURL={'https://www.martinhanak.com/'}
                     githubURL={'https://github.com/MartinHanak/portfolio'}
                 />

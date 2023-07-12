@@ -4,7 +4,7 @@
   "shortDescription": "Online simulace dynamiky sluneční soustavy",
 
   "longDescription": [
-    "Gravitorium je interaktivní simulace pohybu planet naší sluneční soustavy v reálném čase. Simulace umožňuje přesně vypočítat jejich pohyb a zobrazovat jejich trajektorie."
+    "Gravitorium je interaktivní simulace pohybu planet v naší sluneční soustavě. Simulace umožňuje přesně vypočítat jejich pohyb a zobrazovat jejich trajektorie."
   ],
 
   "technologyDescription": [
