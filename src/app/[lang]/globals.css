@@ -17,6 +17,13 @@
 
 }
 
+@media (min-width: 500px) { 
+    :root {
+        --hexagons-in-row: 10;
+        --background-hexagon-image: url('/heroImage.webp');
+    }
+}
+
 @media (min-width: 768px) { 
     :root {
         --hexagons-in-row: 15;

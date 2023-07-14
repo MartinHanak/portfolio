@@ -57,6 +57,14 @@ export function Skills({ id, heading, frontendText, backendText, toolsText }: Sk
 
     function createClickHandler(index: number) {
         return () => {
+            //  manuallySelected[index] refers to the value before click
+            if (activeArray[index] && manuallySelected[index]) {
+                setActiveArray((prev) => {
+                    let newState = [...prev];
+                    newState[index] = false;
+                    return newState
+                })
+            }
 
             setManuallySelected((prev) => {
                 let newState = [...prev];

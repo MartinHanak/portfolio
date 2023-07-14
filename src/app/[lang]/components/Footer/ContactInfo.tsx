@@ -13,7 +13,9 @@ export function ContactInfo({ belowName }: { belowName: string }) {
 
             <div className='flex mt-8'>
                 <SocialIcon bgColor='transparent' target='_blank' fgColor='white' style={{ height: '4rem', width: '4rem' }} url="https://github.com/MartinHanak" />
+                <SocialIcon bgColor='transparent' target='_blank' fgColor='white' style={{ height: '4rem', width: '4rem' }} url="https://www.linkedin.com/in/martin-han%C3%A1k-a27515281/" />
                 <SocialIcon bgColor='transparent' fgColor='white' style={{ height: '4rem', width: '4rem' }} url="mailto:martinhanak97@gmail.com" />
+
             </div>
         </div>
     )
