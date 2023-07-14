@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     screens: {
       'xsm': '400px',
-      'xmd': '800px',
+      'xmd': '860px',
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
 

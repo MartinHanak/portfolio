@@ -89,7 +89,7 @@ export function Navbar({ languageSwitch, navbar }: Navbar) {
 
                     <nav
                         ref={mobileMenu}
-                        className="hexagon-navbar mt-2 md:mt-4 pointer-events-auto
+                        className=" hexagon-navbar mt-2 md:mt-4 pointer-events-auto
                     flex flex-col  xmd:flex-row flex-wrap 
                      " >
 
