@@ -76,7 +76,7 @@ export function Navbar({ languageSwitch, navbar }: Navbar) {
 
 
     return (
-        <header className={`fixed   w-full  ${display ? 'top-0' : '-top-[100%]'}  transition-all duration-1000 will-change-scroll z-[100] pointer-events-none px-2`}>
+        <header className={`fixed left-0   w-full  ${display ? 'top-0' : '-top-[100%]'}  transition-all duration-1000 will-change-scroll z-[100] pointer-events-none px-4`}>
 
             <BigContainer>
                 <div className="w-full flex flex-row justify-between items-start">

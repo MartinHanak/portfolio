@@ -109,7 +109,7 @@ export default function Root({
   params: { lang: Locale }
 }) {
   return (
-    <html lang={params.lang} className={`${IBMFont.variable} ${IBMFont.className}`}>
+    <html lang={params.lang} className={`${IBMFont.variable} ${IBMFont.className} w-full`}>
 
       <body>{children}</body>
 
