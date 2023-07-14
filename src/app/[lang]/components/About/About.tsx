@@ -16,11 +16,23 @@ export async function About({ id, lang }: About) {
 
     return (
         <section id={id} className="grid grid-rows-content grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-4 mt-16">
-            <div className="flex flex-col justify-center items-start px-4 lg:pl-0 lg:pr-8">
-                <span className="block">{t('aboveName')} {t('beforeName')}</span>
-                <span className="block text-4xl font-bold">{t('name')}</span>
-                <span className="block text-lg mb-16">{t('belowName')}</span>
+
+            <div className="flex items-center justify-center mt-4 mb-16 md:mt-0 md:mb-0">
+                <div className=" border-solid border-black border-4 py-4 transform scale-x-75">
+                    <div className=" transform scale-x-[1.3333] flex flex-col items-stretch xsm:items-start justify-center pl-4 lg:pl-0">
+                        <div className="bg-white pt-2">
+                            {`${t('aboveName')} ${t('beforeName')}`}
+                        </div>
+                        <div className="text-3xl xsm:text-4xl font-bold bg-white">
+                            {t('name')}
+                        </div>
+                        <div className="bg-white  xsm:text-xl md:text-base lg:text-xl pb-2 ">
+                            {t('belowName')}
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <div className="px-4 lg:pl-0 lg:pr-0">
 
                 <h2 className="text-4xl font-bold mb-4 ">{t('title')}</h2>

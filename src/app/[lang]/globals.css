@@ -14,6 +14,7 @@
     --hexagon-border-color: black;
 
     --background-hexagon-image: url('/heroImageMobile.webp');
+
 }
 
 @media (min-width: 768px) { 
@@ -94,6 +95,32 @@
         --middle-shift: calc(1.1547 * var(--border-width));
         --top-shift: calc(var(--middle-shift) - var(--border-width) * 0.57735) ;
 
+    }
+
+    .hexagon-about {
+
+        --hexagon-side-length: 250px;
+
+        --gap-size: 4px;
+
+        --inner-hexagon-color: white;
+        --hexagon-border-color: black;
+        --hexagon-border-size: 4px;
+
+        /* outer hexagon dimensions */
+        --hexagon-container-width: calc(var(--hexagon-side-length) * 2);
+        --hexagon-container-height: calc(var(--hexagon-side-length) * 2 * 0.866);
+
+        /* 
+            --overlap-shift: calc( (0.5)* var(--gap-size) - var(--hexagon-container-height) * 0.5);
+            --odd-row-shift: calc(var(--hexagon-container-height) *0.95);  
+        */
+
+        /* inner hexagon helper dimensions */
+        --border-width: var(--hexagon-border-size);
+        --middle-shift: calc(1.1547 * var(--border-width));
+        --top-shift: calc(var(--middle-shift) - var(--border-width) * 0.57735) ;
+        
     }
 
 
