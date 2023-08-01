@@ -68,6 +68,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     creator: 'Martin Hanák',
     publisher: 'Martin Hanák',
     alternates: {
+      canonical: `https://martinhanak.com/${params.lang}`,
       languages: {
         'en': `https://martinhanak.com/en`,
         'cs': `https://martinhanak.com/cs`,
